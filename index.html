@@ -1,25 +1,38 @@
-<!DOCTYPE html>
-<html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="robots" content="index, follow">
+  <meta name="author" content="East Coast Pets">
+  <meta name="theme-color" content="#1a3c34">
   <title>East Coast Pets | Pet Supplies in Clarenville, NL</title>
   <meta name="description" content="Your local pet supply store in Clarenville, NL. East Coast Pets offers premium products from Boreal, Catit, and other top brands for all your pet needs.">
   <meta name="keywords" content="pet supplies, Clarenville, NL, fish supplies, reptile store, bird supplies, small mammal supplies, pet store Newfoundland, Boreal pet food, Catit products, Big Country Raw, aquarium supplies, terrarium supplies">
+  
+  <!-- Open Graph / Facebook -->
   <meta property="og:title" content="East Coast Pets | Pet Supplies in Clarenville, NL">
   <meta property="og:description" content="Your local pet supply store in Clarenville, NL. East Coast Pets offers premium products from Boreal, Catit, and other top brands for all your pet needs.">
   <meta property="og:url" content="https://www.eastcoastpets.ca">
   <meta property="og:image" content="https://www.eastcoastpets.ca/assets/img/og-image.jpg">
+  <meta property="og:image:secure_url" content="https://www.eastcoastpets.ca/assets/img/og-image.jpg">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta property="og:image:type" content="image/jpeg">
+  <meta property="og:image:alt" content="East Coast Pets Storefront">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="East Coast Pets">
+  <meta property="og:locale" content="en_CA">
+
+  <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="East Coast Pets | Pet Supplies in Clarenville, NL">
   <meta name="twitter:description" content="Your local pet supply store in Clarenville, NL. East Coast Pets offers premium products from Boreal, Catit, and other top brands for all your pet needs.">
   <meta name="twitter:image" content="https://www.eastcoastpets.ca/assets/img/og-image.jpg">
-  <link rel="canonical" href="https://www.eastcoastpets.ca">
+  <meta name="twitter:image:alt" content="East Coast Pets Storefront">
+  <meta name="twitter:site" content="@EastCoastPetsNL">
+  <meta name="twitter:creator" content="@EastCoastPetsNL">
+
+  <!-- Schema.org Structured Data -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -34,13 +47,70 @@
       "postalCode": "A5A 1R5",
       "addressCountry": "CA"
     },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 48.1618,
+      "longitude": -53.9699
+    },
     "telephone": "+1-709-466-1222",
-    "openingHours": "Mo-Tu 11:00-18:00, We 11:00-18:00, Th 11:00-19:00, Fr 11:00-18:00, Sa 11:00-17:00",
-    "url": "https://www.eastcoastpets.ca"
+    "openingHoursSpecification": [
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Friday"],
+        "opens": "11:00",
+        "closes": "18:00"
+      },
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": "Thursday",
+        "opens": "11:00",
+        "closes": "19:00"
+      },
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": "Saturday",
+        "opens": "11:00",
+        "closes": "17:00"
+      }
+    ],
+    "url": "https://www.eastcoastpets.ca",
+    "sameAs": [
+      "https://www.facebook.com/EastCoastPetsNL",
+      "https://www.instagram.com/eastcoastpetsnl",
+      "https://twitter.com/EastCoastPetsNL"
+    ],
+    "image": "https://www.eastcoastpets.ca/assets/img/og-image.jpg",
+    "priceRange": "$$"
   }
   </script>
-  <link rel="stylesheet" href="assets/css/styles.css">
+
+  <!-- Canonical and Alternate Links -->
+  <link rel="canonical" href="https://www.eastcoastpets.ca">
+  <link rel="alternate" hreflang="en-CA" href="https://www.eastcoastpets.ca">
+  <link rel="alternate" hreflang="x-default" href="https://www.eastcoastpets.ca">
+
+  <!-- Favicon and Icons -->
   <link rel="shortcut icon" href="assets/img/favicon_io/favicon.ico" type="image/x-icon">
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/img/favicon_io/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon_io/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/img/favicon_io/favicon-16x16.png">
+  <link rel="manifest" href="assets/img/favicon_io/site.webmanifest">
+
+  <!-- Preload Critical Assets -->
+  <link rel="preload" href="assets/css/styles.css" as="style">
+  <link rel="preload" href="assets/img/og-image.jpg" as="image">
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="assets/css/styles.css">
+
+  <!-- DNS Prefetch and Preconnect -->
+  <link rel="dns-prefetch" href="https://www.eastcoastpets.ca">
+  <link rel="preconnect" href="https://www.eastcoastpets.ca" crossorigin>
+
+  <!-- Security Headers (via meta equivalents, ideally set in server config) -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' https://www.eastcoastpets.ca; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline';">
+  <meta http-equiv="X-Content-Type-Options" content="nosniff">
+  <meta http-equiv="X-Frame-Options" content="DENY">
 </head>
 <body>
   <header class="site-header">
