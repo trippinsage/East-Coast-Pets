@@ -98,7 +98,6 @@
 
   <!-- Preload Critical Assets -->
   <link rel="preload" href="assets/css/styles.css" as="style">
-  <link rel="preload" href="assets/img/og-image.jpg" as="image">
 
   <!-- Stylesheets -->
   <link rel="stylesheet" href="assets/css/styles.css">
@@ -107,10 +106,6 @@
   <link rel="dns-prefetch" href="https://www.eastcoastpets.ca">
   <link rel="preconnect" href="https://www.eastcoastpets.ca" crossorigin>
 
-  <!-- Security Headers (via meta equivalents, ideally set in server config) -->
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' https://www.eastcoastpets.ca; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline';">
-  <meta http-equiv="X-Content-Type-Options" content="nosniff">
-  <meta http-equiv="X-Frame-Options" content="DENY">
 </head>
 <body>
   <header class="site-header">
@@ -387,6 +382,17 @@
         <a class="social-button" href="https://www.tiktok.com/@eastcoastpets" target="_blank" rel="noopener">
           <img src="assets/img/icons/TikTok-icon.png" alt="TikTok" class="social-icon">
         </a>
+      </div>
+      <div class="map-container">
+        <iframe 
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d21289.118100930078!2d-53.95479610199508!3d48.16538754057839!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4b7479ce09268143%3A0xa04b6aa9ab459e6f!2sEast%20Coast%20Pets!5e0!3m2!1sen!2sca!4v1746698795671!5m2!1sen!2sca" 
+          width="100%" 
+          height="300" 
+          style="border:0;" 
+          allowfullscreen="" 
+          loading="lazy" 
+          referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
       </div>
 
     </section>
