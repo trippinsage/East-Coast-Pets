@@ -1,3 +1,14 @@
+/* CSS Variables */
+:root {
+  --primary-bg: #1A0629;
+  --header-bg: #190327;
+  --accent-color: #C8E034;
+  --secondary-accent: #57C8C6;
+  --text-color: #f0f0f0;
+  --highlight-color: #FA5387;
+  --shadow-color: rgba(0, 0, 0, 0.3);
+}
+
 /* Reset & Base */
 * {
   margin: 0;
@@ -8,11 +19,14 @@
 
 html, body {
   font-family: 'Helvetica Neue', Arial, sans-serif;
-  color: #f0f0f0;
-  background-color: #1A0629;
+  color: var(--text-color);
+  background-color: var(--primary-bg);
   line-height: 1.6;
   scroll-behavior: smooth;
   font-size: 16px;
+  max-width: 100%;
+  overflow-x: hidden;
+  touch-action: manipulation;
 }
 
 /* Accessibility: Skip Link */
@@ -20,8 +34,8 @@ html, body {
   position: absolute;
   top: -100px;
   left: 0;
-  background: #C8E034;
-  color: #1A0629;
+  background: var(--accent-color);
+  color: var(--primary-bg);
   padding: 0.5rem 1rem;
   z-index: 10000;
   text-decoration: none;
@@ -31,12 +45,12 @@ html, body {
 .skip-link:focus {
   top: 0;
   left: 0;
-  outline: 2px solid #57C8C6;
+  outline: 2px solid var(--secondary-accent);
 }
 
 /* Header */
 .site-header {
-  background-color: #190327;
+  background-color: var(--header-bg);
   padding: 1rem 2rem;
   display: flex;
   justify-content: center;
@@ -44,7 +58,8 @@ html, body {
   position: sticky;
   top: 0;
   z-index: 1000;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 2px 4px var(--shadow-color);
+  max-width: 100%;
 }
 
 .logo img {
@@ -54,7 +69,7 @@ html, body {
 }
 
 .logo a:focus {
-  outline: 2px solid #C8E034;
+  outline: 2px solid var(--accent-color);
   outline-offset: 2px;
 }
 
@@ -67,13 +82,14 @@ html, body {
   position: relative;
   text-align: center;
   padding: 4rem 2rem;
-  color: #fff;
+  color: var(--text-color);
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   overflow: hidden;
+  max-width: 100%;
 }
 
 #hero .hero-bg {
@@ -119,38 +135,38 @@ html, body {
 #hero h1 {
   font-size: 3rem;
   margin-bottom: 1rem;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+  text-shadow: 2px 2px 4px var(--shadow-color);
 }
 
 #hero p {
   font-size: 1.4rem;
   max-width: 600px;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+  text-shadow: 2px 2px 4px var(--shadow-color);
 }
 
 #hero .btn {
   display: inline-block;
   margin-top: 2rem;
   padding: 0.75rem 2rem;
-  background-color: #C8E034;
-  color: #1A0629;
+  background-color: var(--accent-color);
+  color: var(--primary-bg);
   border: none;
   border-radius: 50px;
   font-size: 1.2rem;
   font-weight: bold;
   text-decoration: none;
   transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 4px 8px var(--shadow-color);
 }
 
 #hero .btn:hover {
-  background-color: #57C8C6;
+  background-color: var(--secondary-accent);
   transform: translateY(-2px);
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 6px 12px var(--shadow-color);
 }
 
 #hero .btn:focus {
-  outline: 2px solid #C8E034;
+  outline: 2px solid var(--accent-color);
   outline-offset: 2px;
 }
 
@@ -196,7 +212,7 @@ html, body {
 }
 
 .info-section h2 {
-  color: #C8E034;
+  color: var(--accent-color);
   font-size: 2rem;
   margin-bottom: 1.5rem;
 }
@@ -216,12 +232,12 @@ html, body {
   max-width: 600px;
   margin-left: auto;
   margin-right: auto;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 4px 8px var(--shadow-color);
   border: 1px solid rgba(200, 224, 52, 0.2);
 }
 
 .hours-container h3 {
-  color: #C8E034;
+  color: var(--accent-color);
   text-align: center;
   margin-bottom: 1rem;
   font-size: 1.6rem;
@@ -244,7 +260,7 @@ html, body {
   border-radius: 8px;
   font-weight: 500;
   text-align: center;
-  color: #f0f0f0;
+  color: var(--text-color);
   transition: transform 0.2s ease, background 0.2s ease;
   border: 1px solid rgba(200, 224, 52, 0.1);
 }
@@ -255,7 +271,7 @@ html, body {
 }
 
 .hours li:focus {
-  outline: 2px solid #C8E034;
+  outline: 2px solid var(--accent-color);
   outline-offset: 2px;
 }
 
@@ -263,13 +279,13 @@ html, body {
   display: block;
   font-size: 1rem;
   font-weight: 700;
-  color: #C8E034;
+  color: var(--accent-color);
   margin-bottom: 0.2rem;
 }
 
 .hours li span.hours-text {
   font-size: 0.9rem;
-  color: #f0f0f0;
+  color: var(--text-color);
 }
 
 @media (max-width: 768px) {
@@ -281,7 +297,7 @@ html, body {
     font-size: 1.4rem;
   }
   .hours {
-    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    grid-template-columns: 1fr 1fr;
     gap: 0.6rem;
   }
   .hours li span.day {
@@ -300,7 +316,7 @@ html, body {
     font-size: 1.2rem;
   }
   .hours {
-    grid-template-columns: repeat(auto-fit, minmax(90px, 1fr));
+    grid-template-columns: 1fr;
   }
   .hours li span.day {
     font-size: 0.85rem;
@@ -315,6 +331,7 @@ html, body {
   padding: 3rem 2rem;
   background-color: #2B0B3A;
   text-align: center;
+  max-width: 100%;
 }
 
 .brands-container {
@@ -323,7 +340,7 @@ html, body {
 }
 
 .brands-container h2 {
-  color: #C8E034;
+  color: var(--accent-color);
   font-size: 2rem;
   margin-bottom: 2rem;
 }
@@ -333,10 +350,11 @@ html, body {
   padding: 3rem 2rem;
   background: #2B0B3A;
   text-align: center;
+  max-width: 100%;
 }
 
 .gallery-section h2 {
-  color: #FA5387;
+  color: var(--highlight-color);
   font-size: 2rem;
   margin-bottom: 2rem;
 }
@@ -346,7 +364,8 @@ html, body {
   position: relative;
   max-width: 100%;
   margin: 0 auto;
-  padding: 0 40px; /* Reduced padding to bring arrows closer */
+  padding: 0 40px; /* Space for arrows */
+  overflow: hidden;
 }
 
 .brand-carousel,
@@ -382,13 +401,13 @@ html, body {
   height: 120px;
   object-fit: contain;
   border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 2px 4px var(--shadow-color);
   background: #fff;
   padding: 0.5rem;
 }
 
 .brand-slide p {
-  color: #f0f0f0;
+  color: var(--text-color);
   font-weight: bold;
   font-size: 0.9rem;
   margin-top: 0.5rem;
@@ -403,7 +422,7 @@ html, body {
   height: 250px;
   object-fit: cover;
   border-radius: 12px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 4px 8px var(--shadow-color);
 }
 
 .brand-slide:hover,
@@ -416,54 +435,52 @@ html, body {
   justify-content: space-between;
   position: absolute;
   top: 50%;
-  width: calc(100% + 80px); /* Reduced width to bring arrows closer */
-  left: -40px; /* Adjusted to match padding */
+  width: calc(100% + 40px); /* Positions arrows outside slides */
+  left: -20px; /* Matches padding */
   transform: translateY(-50%);
 }
 
 .carousel-btn {
-  background: rgba(0, 0, 0, 0.7);
+  background: none; /* No circular background */
   border: none;
-  border-radius: 50%;
-  width: 40px;
-  height: 40px;
   cursor: pointer;
-  transition: transform 0.2s ease, background 0.2s ease;
+  transition: transform 0.2s ease;
   display: flex;
   align-items: center;
   justify-content: center;
+  width: 24px; /* Matches SVG size */
+  height: 24px;
 }
 
 .carousel-btn:hover {
-  background: rgba(0, 0, 0, 0.9);
-  transform: scale(1.1);
+  transform: scale(1.2); /* Enlarge arrow on hover */
 }
 
 .carousel-btn:focus {
-  outline: 2px solid #C8E034;
-  outline-offset: 2px;
+  transform: scale(1.1); /* Subtle scale for focus state, no yellow outline */
 }
 
 .carousel-btn svg {
   width: 24px;
   height: 24px;
+  stroke: #fff; /* White arrow */
 }
 
 .carousel-btn.prev {
-  margin-left: 10px;
+  margin-left: 10px; /* 10-15px gap from slides */
 }
 
 .carousel-btn.next {
-  margin-right: 10px;
+  margin-right: 10px; /* 10-15px gap from slides */
 }
 
 @media (max-width: 768px) {
   .carousel-container {
-    padding: 0 35px;
+    padding: 0 30px;
   }
   .carousel-controls {
-    width: calc(100% + 70px);
-    left: -35px;
+    width: calc(100% + 30px);
+    left: -15px;
   }
   .brand-slide {
     width: 150px;
@@ -481,22 +498,28 @@ html, body {
     height: 200px;
   }
   .carousel-btn {
-    width: 36px;
-    height: 36px;
+    width: 20px;
+    height: 20px;
   }
   .carousel-btn svg {
     width: 20px;
     height: 20px;
   }
+  .carousel-btn.prev {
+    margin-left: 8px;
+  }
+  .carousel-btn.next {
+    margin-right: 8px;
+  }
 }
 
 @media (max-width: 480px) {
   .carousel-container {
-    padding: 0 30px;
+    padding: 0 20px;
   }
   .carousel-controls {
-    width: calc(100% + 60px);
-    left: -30px;
+    width: calc(100% + 20px);
+    left: -10px;
   }
   .brand-slide {
     width: 120px;
@@ -514,12 +537,18 @@ html, body {
     height: 150px;
   }
   .carousel-btn {
-    width: 32px;
-    height: 32px;
+    width: 18px;
+    height: 18px;
   }
   .carousel-btn svg {
     width: 18px;
     height: 18px;
+  }
+  .carousel-btn.prev {
+    margin-left: 6px;
+  }
+  .carousel-btn.next {
+    margin-right: 6px;
   }
 }
 
@@ -532,7 +561,7 @@ html, body {
 }
 
 #contact h2 {
-  color: #C8E034;
+  color: var(--accent-color);
   font-size: 2rem;
   margin-bottom: 1.5rem;
 }
@@ -543,17 +572,17 @@ html, body {
 }
 
 #contact a {
-  color: #C8E034;
+  color: var(--accent-color);
   text-decoration: none;
   transition: color 0.2s ease;
 }
 
 #contact a:hover {
-  color: #57C8C6;
+  color: var(--secondary-accent);
 }
 
 #contact a:focus {
-  outline: 2px solid #C8E034;
+  outline: 2px solid var(--accent-color);
   outline-offset: 2px;
 }
 
@@ -576,7 +605,7 @@ html, body {
 }
 
 .social-button:focus {
-  outline: 2px solid #C8E034;
+  outline: 2px solid var(--accent-color);
   outline-offset: 2px;
 }
 
@@ -598,7 +627,7 @@ html, body {
   width: 100%;
   height: 300px;
   border-radius: 12px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 4px 8px var(--shadow-color);
 }
 
 /* Legal Section */
@@ -611,19 +640,19 @@ html, body {
 
 .legal-section h1 {
   text-align: center;
-  color: #C8E034;
+  color: var(--accent-color);
   font-size: 2.5rem;
   margin-bottom: 2rem;
 }
 
 .legal-section h2 {
-  color: #FA5387;
+  color: var(--highlight-color);
   font-size: 1.8rem;
   margin: 1.5rem 0 1rem;
 }
 
 .legal-section h3 {
-  color: #f0f0f0;
+  color: var(--text-color);
   font-size: 1.4rem;
   margin: 1rem 0 0.5rem;
 }
@@ -632,7 +661,7 @@ html, body {
 .legal-section li {
   font-size: 1.1rem;
   margin-bottom: 0.8rem;
-  color: #f0f0f0;
+  color: var(--text-color);
 }
 
 .legal-section ul {
@@ -642,17 +671,17 @@ html, body {
 }
 
 .legal-section a {
-  color: #C8E034;
+  color: var(--accent-color);
   text-decoration: none;
   transition: color 0.2s ease;
 }
 
 .legal-section a:hover {
-  color: #57C8C6;
+  color: var(--secondary-accent);
 }
 
 .legal-section a:focus {
-  outline: 2px solid #C8E034;
+  outline: 2px solid var(--accent-color);
   outline-offset: 2px;
 }
 
@@ -696,12 +725,13 @@ html, body {
 
 /* Footer */
 .site-footer {
-  background-color: #1A0629;
+  background-color: var(--primary-bg);
   text-align: center;
   padding: 1.5rem 2rem;
   font-size: 0.9rem;
   color: #aaa;
   border-top: 1px solid rgba(200, 224, 52, 0.2);
+  max-width: 100%;
 }
 
 .site-footer p {
@@ -710,43 +740,68 @@ html, body {
 
 .home-btn,
 .legal-link {
-  color: #C8E034;
+  color: var(--accent-color);
   text-decoration: none;
   transition: color 0.2s ease;
 }
 
 .home-btn:hover,
 .legal-link:hover {
-  color: #57C8C6;
+  color: var(--secondary-accent);
 }
 
 .home-btn:focus,
 .legal-link:focus {
-  outline: 2px solid #C8E034;
+  outline: 2px solid var(--accent-color);
   outline-offset: 2px;
 }
 
 .home-btn {
   display: inline-block;
   padding: 0.75rem 2rem;
-  background-color: #C8E034;
-  color: #1A0629;
+  background-color: var(--accent-color);
+  color: var(--primary-bg);
   border: none;
   border-radius: 50px;
   font-size: 1.2rem;
   font-weight: bold;
   margin-top: 1rem;
   transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 4px 8px var(--shadow-color);
 }
 
 .home-btn:hover {
-  background-color: #57C8C6;
+  background-color: var(--secondary-accent);
   transform: translateY(-2px);
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 6px 12px var(--shadow-color);
 }
 
 .home-btn:focus {
-  outline: 2px solid #C8E034;
+  outline: 2px solid var(--accent-color);
   outline-offset: 2px;
+}
+
+/* Image Fallback */
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+/* Prevent Text Selection on Double-Tap (Mobile) */
+body {
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+@media (max-width: 768px) {
+  body {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  body {
+    font-size: 12px;
+  }
 }
