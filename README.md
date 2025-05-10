@@ -1,197 +1,106 @@
+<!-- PROJECT BADGES -->
+<p align="center">
+  <a href="https://github.com/your-username/east-coast-pets">
+    <img src="https://img.shields.io/badge/Repo-Static%20Site-blue?logo=github" alt="Repo: Static Site" />
+  </a>
+  <a href="https://eastcoastpets.ca" target="_blank">
+    <img src="https://img.shields.io/badge/Live-Site-🚀-green" alt="Live Site" />
+  </a>
+  <a href="https://github.com/your-username/east-coast-pets/issues" target="_blank">
+    <img src="https://img.shields.io/github/issues/your-username/east-coast-pets" alt="GitHub issues" />
+  </a>
+  <a href="https://g.co/kgs/QSLmZuu" target="_blank">
+    <img src="https://img.shields.io/badge/Reviews-Facebook-blue?logo=facebook" alt="Facebook Reviews" />
+  </a>
+</p>
 
+---
 
-  
+# 🌊 East Coast Pets
 
+<p align="center">
+  <img src="assets/img/ECP-LOGO.jpg" alt="East Coast Pets Logo" width="200" />
+</p>
 
+Welcome to the **East Coast Pets** marketing site!  
+Your one-stop shop for fish, reptiles, birds & small mammals in Clarenville, NL.  
+📍 256 Memorial Dr, Clarenville, NL • ☎️ (709) 466-1222
 
+---
 
-  
-    
-  
-  
-    
-  
-  
-    
-  
-  
-    
-  
-  
-    
-  
-  
-    
-  
+## 📸 Live Demo
 
+<div align="center">
+  <a href="https://eastcoastpets.ca" target="_blank">
+    <img src="https://media.giphy.com/media/3orieVVhHQsVnC0xDW/giphy.gif" alt="Site preview" width="600">
+  </a>
+</div>
 
+---
 
-🌊 East Coast Pets
+## 🗂️ Repo Structure
 
-  
+📦east-coast-pets ┣ 📂assets ┃ ┣ 📂css ┃ ┃ ┗ 📜styles.css ┃ ┣ 📂js ┃ ┃ ┗ 📜script.js ┃ ┗ 📂img ┃ ┗ 📜ECP-LOGO.jpg ┣ 📂seo ┃ ┗ 📜meta-tags.html ┣ 📜index.html ┣ 📜legal.html ┗ 📜README.md
 
+yaml
+Copy
+Edit
 
-Welcome to East Coast Pets, the ultimate pet store in Clarenville, Newfoundland & Labrador! 🐠🐍🦜Discover fish, reptiles, birds, and small mammals at our family-friendly shop. This repository powers our marketing site, a lightweight, accessible, and SEO-optimized static site built with love for pet enthusiasts.  
-📍 256 Memorial Dr, Clarenville, NL☎️ (709) 466-1222🌐 eastcoastpets.ca
+---
 
-📸 Live Demo & Screenshots
+## 🎨 Key Features
 
-  
-    
-  
+- **Mobile-first** responsive design  
+- **Accessible**: keyboard nav, skip-links, ARIA roles  
+- **Smooth scroll** with sticky header offset  
+- **Interactive** Facebook embed & Google Reviews link  
+- **Optimized** gallery with lazy-loaded images  
+- **Legal pages**: Terms, Privacy, Cookies  
 
+---
 
+## 🚀 Local Development
 
+1. **Clone** the repo  
+   ```bash
+   git clone https://github.com/your-username/east-coast-pets.git
+   cd east-coast-pets
+Open index.html in your browser
 
-
-Homepage
-Gallery
-Mobile View
-
-
-
-
-
-
-
-
-
-🗂️ Repository Structure
-Based on the repository at trippinsage/East-Coast-Pets:
-East-Coast-Pets/
-├── assets/
-│   ├── css/
-│   │   └── styles.css
-│   ├── js/
-│   │   └── script.js
-│   └── img/
-│       ├── ECP-BANNER.jpg
-│       ├── ECP-LOGO.jpg
-│       └── [other images]
-├── seo/
-│   └── meta-tags.html
-├── index.html
-├── legal.html
-├── LICENSE
-└── README.md
-
-
-🎨 Key Features
-
-Mobile-First Design: Fully responsive across devices, from smartphones to desktops.
-Accessibility: Keyboard navigation, ARIA roles, skip-links, and high-contrast support.
-Smooth Interactions: Sticky header with scroll offset and animated transitions.
-Social Integration: Embedded Facebook feed and Google Reviews link for community engagement.
-Performance Optimized: Lazy-loaded images, minified CSS/JS, and compressed assets.
-SEO Ready: Structured meta tags, Open Graph, and schema.org markup for better search rankings.
-Legal Compliance: Terms of Service, Privacy Policy, and Cookie Policy pages.
-
-
-🛠️ Tech Stack
-
-HTML5: Semantic markup for accessibility and SEO.
-CSS3: Flexbox, Grid, and media queries for responsive styling.
-JavaScript: Vanilla JS for interactivity (e.g., smooth scrolling, gallery).
-SEO: Custom meta tags and structured data in seo/meta-tags.html.
-Hosting: Static site compatible with GitHub Pages, Netlify, Vercel, etc.
-
-
-🚀 Local Development
-Get the site running locally in minutes:
-
-Clone the repository:
-git clone https://github.com/trippinsage/East-Coast-Pets.git
-cd East-Coast-Pets
-
-
-Serve the site:
-
-Open index.html in a browser (e.g., open index.html on macOS).
-Alternatively, use a local server for live reloading:npx http-server
-
-Then visit http://localhost:8080.
-
-
-Edit files:
-
-Modify assets/css/styles.css for styling.
-Update assets/js/script.js for interactivity.
-Adjust index.html or legal.html for content.
-
-
-Linting (optional):
-
-Run HTML/CSS/JS linters to ensure code quality:npx prettier --check .
-npx eslint assets/js/script.js
-
-
-
-
-
+Edit CSS/HTML/JS—no build step required!
 
 📦 Deployment
-Deploy the site to any static hosting platform:
+Host on any static-site service:
 
-GitHub Pages:
+GitHub Pages: enable in repo Settings → Pages
 
-Go to Settings → Pages.
-Set the source to the main branch.
-Access the site at https://trippinsage.github.io/East-Coast-Pets.
+Netlify: drag & drop folder or connect via Git
 
+Vercel, Firebase Hosting, etc.
 
-Netlify:
-
-Drag and drop the project folder into Netlify’s dashboard.
-Or connect the repository via Git for auto-deploys.
-
-
-Vercel/Firebase Hosting:
-
-Use their CLI tools or Git integration.
-Ensure assets/ and seo/ are included in the build.
-
-
-
-Tip: Use a CI/CD pipeline (e.g., GitHub Actions) to automate linting and deployment. Example workflow in .github/workflows/deploy.yml.
-
-🔍 SEO & Performance Optimizations
-
-Meta Tags: Custom descriptions, keywords, and Open Graph tags in seo/meta-tags.html.
-Image Compression: All images in assets/img/ are optimized (<200KB each).
-Lazy Loading: Gallery images load only when in viewport.
-Minification: CSS and JS files are minified for faster load times.
-CDN Support: Compatible with Cloudflare or similar for global caching.
-
+Ensure assets/ and seo/ folders are published.
 
 🤝 Contributing
-We welcome contributions from developers and pet lovers alike! Follow these steps:
+Fork this repo
 
-Fork the repository.
-Create a feature branch:git checkout -b feature/your-feature
+Create a feature branch: git checkout -b feature/your-feature
 
+Commit changes: git commit -m 'Add some feature'
 
-Commit changes:git commit -m "Add your feature"
+Push branch: git push origin feature/your-feature
 
+Open a Pull Request
 
-Push to the branch:git push origin feature/your-feature
+❤️ Support
+If you love East Coast Pets, please:
 
+⭐️ Star this repo
 
-Open a Pull Request.
+📝 Leave us a Google Review
 
-Please adhere to our Code of Conduct and check the Contributing Guidelines for details.
-
-🐾 Community & Support
-Support East Coast Pets and join our pet-loving community:
-
-⭐️ Star this repository to show your love!
-📝 Leave a review on Google or Facebook.
-📢 Spread the word: Tell friends about our store in Clarenville!
-🐶 Visit us: Stop by for pet supplies or to meet our furry and scaly friends.
-
-Have questions? Open an issue or email us at info@eastcoastpets.ca.
+📢 Tell your friends!
 
 📄 License
-This project is licensed under the MIT License. Feel free to use, modify, and distribute the code.
+This project is licensed under the MIT License. See LICENSE for details.
 
-
-  
+<p align="center"> Made with 🐠 & ❤️ in Newfoundland </p> ```
