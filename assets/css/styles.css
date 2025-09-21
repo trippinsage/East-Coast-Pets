@@ -380,7 +380,6 @@ html, body {
   position: relative;
   max-width: 100%;
   margin: 0 auto;
-  padding: 0 40px; /* Space for arrows */
   overflow: hidden;
 }
 
@@ -388,12 +387,14 @@ html, body {
 .gallery-carousel {
   display: flex;
   gap: 1.5rem;
-  overflow-x: hidden;
+  overflow-x: auto;
   scroll-behavior: smooth;
   padding: 1rem 0;
   justify-content: flex-start;
   user-select: none;
   -webkit-user-drag: none;
+  scroll-snap-type: x mandatory;
+  touch-action: pan-x;
 }
 
 .brand-carousel::-webkit-scrollbar,
@@ -405,11 +406,19 @@ html, body {
 .gallery-slide {
   flex: 0 0 auto;
   transition: transform 0.3s ease;
+  scroll-snap-align: start;
 }
 
 .brand-slide {
   width: 180px;
   text-align: center;
+}
+
+.brand-slide a {
+  text-decoration: none;
+  display: block;
+  color: var(--text-color);
+  transition: color 0.3s ease, transform 0.3s ease;
 }
 
 .brand-slide img {
@@ -420,6 +429,7 @@ html, body {
   box-shadow: 0 2px 4px var(--shadow-color);
   background: #fff;
   padding: 0.5rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .brand-slide p {
@@ -427,6 +437,26 @@ html, body {
   font-weight: bold;
   font-size: 0.9rem;
   margin-top: 0.5rem;
+  padding: 0.25rem 0;
+  position: relative;
+}
+
+.brand-slide a:hover {
+  color: var(--secondary-accent);
+}
+
+.brand-slide a:hover img {
+  transform: scale(1.05);
+  box-shadow: 0 4px 8px var(--shadow-color);
+}
+
+.brand-slide a:focus {
+  outline: 2px solid var(--accent-color);
+  outline-offset: 2px;
+}
+
+.brand-slide a:focus p {
+  color: var(--secondary-accent);
 }
 
 .gallery-slide {
@@ -446,57 +476,9 @@ html, body {
   transform: scale(1.05);
 }
 
-.carousel-controls {
-  display: flex;
-  justify-content: space-between;
-  position: absolute;
-  top: 50%;
-  width: calc(100% + 40px); /* Positions arrows outside slides */
-  left: -20px; /* Matches padding */
-  transform: translateY(-50%);
-}
-
-.carousel-btn {
-  background: none; /* No circular background */
-  border: none;
-  cursor: pointer;
-  transition: transform 0.2s ease;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 24px; /* Matches SVG size */
-  height: 24px;
-}
-
-.carousel-btn:hover {
-  transform: scale(1.2); /* Enlarge arrow on hover */
-}
-
-.carousel-btn:focus {
-  transform: scale(1.1); /* Subtle scale for focus state, no yellow outline */
-}
-
-.carousel-btn svg {
-  width: 24px;
-  height: 24px;
-  stroke: #fff; /* White arrow */
-}
-
-.carousel-btn.prev {
-  margin-left: 10px; /* 10-15px gap from slides */
-}
-
-.carousel-btn.next {
-  margin-right: 10px; /* 10-15px gap from slides */
-}
-
 @media (max-width: 768px) {
   .carousel-container {
-    padding: 0 30px;
-  }
-  .carousel-controls {
-    width: calc(100% + 30px);
-    left: -15px;
+    padding: 0;
   }
   .brand-slide {
     width: 150px;
@@ -513,29 +495,11 @@ html, body {
   .gallery-slide img {
     height: 200px;
   }
-  .carousel-btn {
-    width: 20px;
-    height: 20px;
-  }
-  .carousel-btn svg {
-    width: 20px;
-    height: 20px;
-  }
-  .carousel-btn.prev {
-    margin-left: 8px;
-  }
-  .carousel-btn.next {
-    margin-right: 8px;
-  }
 }
 
 @media (max-width: 480px) {
   .carousel-container {
-    padding: 0 20px;
-  }
-  .carousel-controls {
-    width: calc(100% + 20px);
-    left: -10px;
+    padding: 0;
   }
   .brand-slide {
     width: 120px;
@@ -551,20 +515,6 @@ html, body {
   }
   .gallery-slide img {
     height: 150px;
-  }
-  .carousel-btn {
-    width: 18px;
-    height: 18px;
-  }
-  .carousel-btn svg {
-    width: 18px;
-    height: 18px;
-  }
-  .carousel-btn.prev {
-    margin-left: 6px;
-  }
-  .carousel-btn.next {
-    margin-right: 6px;
   }
 }
 

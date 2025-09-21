@@ -13,58 +13,56 @@ document.addEventListener('DOMContentLoaded', () => {
     liveRegion.setAttribute('class', 'sr-only');
     container.appendChild(liveRegion);
 
-    setupCarouselControls(carousel, container, liveRegion);
+    setupScrollHandling(carousel, liveRegion);
     setupAutoScroll(carousel);
   });
 });
 
-// Setup Carousel Navigation Controls
-function setupCarouselControls(carousel, container, liveRegion) {
-  const prevBtn = container.querySelector('.carousel-btn.prev');
-  const nextBtn = container.querySelector('.carousel-btn.next');
-  if (!prevBtn || !nextBtn) return;
+// Setup Scroll Handling for Touch and Mouse
+function setupScrollHandling(carousel, liveRegion) {
+  carousel.dataset.isAutoScrolling = 'true';
 
-  function scrollToSlide(direction) {
+  // Announce slide changes for accessibility
+  function announceSlideChange() {
     const slides = carousel.querySelectorAll('.brand-slide, .gallery-slide');
     const slideWidth = slides[0].offsetWidth + parseInt(getComputedStyle(slides[0]).marginRight);
-    const maxScroll = carousel.scrollWidth - carousel.clientWidth;
     const currentScroll = carousel.scrollLeft;
-    let newScroll;
-
-    if (direction === 'next') {
-      newScroll = currentScroll >= maxScroll - 1 ? 0 : currentScroll + slideWidth;
-    } else {
-      newScroll = currentScroll <= 0 ? maxScroll : currentScroll - slideWidth;
-    }
-
-    carousel.scrollTo({
-      left: newScroll,
-      behavior: 'smooth',
-    });
-
-    // Announce slide change for screen readers
-    const currentSlideIndex = Math.round(newScroll / slideWidth) + 1;
+    const currentSlideIndex = Math.round(currentScroll / slideWidth) + 1;
     const totalSlides = slides.length;
     liveRegion.textContent = `Slide ${currentSlideIndex} of ${totalSlides}`;
+  }
 
-    // Pause auto-scroll during interaction
+  // Handle scroll events for both touch and mouse
+  carousel.addEventListener('scroll', () => {
+    // Pause auto-scroll during manual interaction
     carousel.dataset.isAutoScrolling = 'false';
+    announceSlideChange();
+    // Resume auto-scroll after 3 seconds
+    clearTimeout(carousel.dataset.scrollTimeout);
+    carousel.dataset.scrollTimeout = setTimeout(() => {
+      carousel.dataset.isAutoScrolling = 'true';
+    }, 3000);
+  });
+
+  // Enhance touch scrolling for mobile
+  carousel.addEventListener('touchstart', () => {
+    carousel.dataset.isAutoScrolling = 'false';
+  });
+
+  carousel.addEventListener('touchend', () => {
+    // Resume auto-scroll after touch interaction
     setTimeout(() => {
       carousel.dataset.isAutoScrolling = 'true';
     }, 3000);
-  }
+  });
 
-  prevBtn.addEventListener('click', () => scrollToSlide('prev'));
-  nextBtn.addEventListener('click', () => scrollToSlide('next'));
+  // Enhance mouse scrolling for desktop
+  carousel.addEventListener('mouseenter', () => {
+    carousel.dataset.isAutoScrolling = 'false';
+  });
 
-  // Keyboard navigation
-  [prevBtn, nextBtn].forEach((btn) => {
-    btn.addEventListener('keydown', (e) => {
-      if (e.key === 'Enter' || e.key === ' ') {
-        e.preventDefault();
-        btn.click();
-      }
-    });
+  carousel.addEventListener('mouseleave', () => {
+    carousel.dataset.isAutoScrolling = 'true';
   });
 
   // Focus management for accessibility
@@ -79,7 +77,6 @@ function setupCarouselControls(carousel, container, liveRegion) {
 
 // Auto-Scroll Functionality
 function setupAutoScroll(carousel) {
-  carousel.dataset.isAutoScrolling = 'true';
   const interval = 5000; // Scroll every 5 seconds
 
   function autoScroll() {
@@ -96,24 +93,7 @@ function setupAutoScroll(carousel) {
     });
   }
 
-  const autoScrollInterval = setInterval(autoScroll, interval);
-
-  // Pause auto-scroll on hover or focus
-  carousel.addEventListener('mouseenter', () => {
-    carousel.dataset.isAutoScrolling = 'false';
-  });
-
-  carousel.addEventListener('mouseleave', () => {
-    carousel.dataset.isAutoScrolling = 'true';
-  });
-
-  // Pause on touch interaction
-  carousel.addEventListener('touchstart', () => {
-    carousel.dataset.isAutoScrolling = 'false';
-    setTimeout(() => {
-      carousel.dataset.isAutoScrolling = 'true';
-    }, 3000);
-  });
+  setInterval(autoScroll, interval);
 }
 
 // Screen reader only class
