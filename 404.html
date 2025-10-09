@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en-CA">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex, follow" />
+  <title>Page Not Found | East Coast Pets</title>
+  <link rel="stylesheet" href="/assets/css/styles.css" />
+</head>
+
+<body>
+  <header class="site-header">
+    <div class="logo">
+      <a href="/" aria-label="East Coast Pets Home">
+        <img src="/assets/img/branding/ecp-logo.webp" alt="East Coast Pets Logo" />
+      </a>
+    </div>
+  </header>
+
+  <main id="hero">
+    <h1>404 - Page Not Found</h1>
+    <p>Looks like this page wandered off like a curious kitten 🐾<br>
+    But don’t worry — you can head back home safely below.</p>
+    <a href="/" class="home-btn">Return Home</a>
+  </main>
+
+  <footer class="site-footer">
+    <p>&copy; <span id="year"></span> East Coast Pets. All Rights Reserved.</p>
+  </footer>
+
+  <script>
+    // Auto year update
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
