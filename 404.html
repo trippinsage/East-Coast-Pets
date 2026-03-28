@@ -5,29 +5,51 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="robots" content="noindex, follow" />
   <title>Page Not Found | East Coast Pets</title>
+  <link rel="shortcut icon" href="/assets/img/branding/favicon_io/favicon.ico" type="image/x-icon">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@600;700;800&display=swap">
   <link rel="stylesheet" href="/assets/css/styles.css" />
 </head>
 
 <body>
   <header class="site-header">
-    <div class="logo">
-      <a href="/" aria-label="East Coast Pets Home">
-        <img src="/assets/img/branding/ecp-logo.webp" alt="East Coast Pets Logo" />
-      </a>
+    <div class="header-inner">
+      <div class="logo">
+        <a href="/" aria-label="East Coast Pets Home">
+          <img src="/assets/img/branding/ecp-logo.webp" alt="East Coast Pets Logo" />
+        </a>
+      </div>
+      <button class="nav-toggle" aria-label="Open navigation menu" aria-expanded="false" aria-controls="main-nav" type="button">
+        <span class="nav-toggle-bar"></span>
+        <span class="nav-toggle-bar"></span>
+        <span class="nav-toggle-bar"></span>
+      </button>
+      <nav id="main-nav" class="main-nav" role="navigation" aria-label="Main navigation">
+        <a href="/index.html#about" class="nav-link">About</a>
+        <a href="/index.html#brands" class="nav-link">Brands</a>
+        <a href="/index.html#services" class="nav-link">Services</a>
+        <a href="/index.html#gallery" class="nav-link">Gallery</a>
+        <a href="/index.html#contact" class="nav-link">Contact</a>
+      </nav>
     </div>
   </header>
 
-  <main id="hero">
-    <h1>404 - Page Not Found</h1>
-    <p>Looks like this page wandered off like a curious kitten 🐾<br>
-    But don’t worry — you can head back home safely below.</p>
+  <main class="error-page">
+    <h2>404 - Page Not Found</h2>
+    <p>Looks like this page wandered off like a curious kitten.</p>
+    <p>But don't worry — you can head back home safely below.</p>
     <a href="/" class="home-btn">Return Home</a>
   </main>
 
   <footer class="site-footer">
-    <p>&copy; <span id="year"></span> East Coast Pets. All Rights Reserved.</p>
+    <div class="footer-bottom">
+      <p>&copy; <span id="year"></span> East Coast Pets. All Rights Reserved.</p>
+      <p class="powered-by">Website by <a href="https://sages.services" target="_blank" rel="noopener noreferrer">Sages Services</a></p>
+    </div>
   </footer>
 
+  <script src="/assets/js/script.js" defer></script>
   <script>
     // Auto year update
     document.getElementById("year").textContent = new Date().getFullYear();

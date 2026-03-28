@@ -2,18 +2,24 @@
 <html lang="en-CA">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="robots" content="index, follow">
   <meta name="author" content="East Coast Pets">
-  <meta name="theme-color" content="#1a3c34">
-  <title>East Coast Pets</title>
-  <meta name="description" content="Your local pet supply store in Clarenville, NL. East Coast Pets offers premium products from Boreal, Catit, and other top brands for all your pet needs.">
-  <meta name="keywords" content="pet supplies, Clarenville, NL, fish supplies, reptile store, bird supplies, small mammal supplies, pet store Newfoundland, Boreal pet food, Catit products, Big Country Raw, aquarium supplies, terrarium supplies">
+  <meta name="theme-color" content="#1A0629">
+
+  <!-- GEO / Local SEO -->
+  <meta name="geo.region" content="CA-NL">
+  <meta name="geo.placename" content="Clarenville">
+  <meta name="geo.position" content="48.1618;-53.9699">
+  <meta name="ICBM" content="48.1618, -53.9699">
+
+  <title>East Coast Pets | Pet Supplies in Clarenville, NL</title>
+  <meta name="description" content="East Coast Pets — your pet supply stop near the Trans-Canada Highway in Clarenville, NL. Just 2.4 km via Manitoba Drive. Premium dog & cat food, aquarium supplies, reptile gear, treats & more. (709) 466-1222.">
+  <meta name="keywords" content="pet store Clarenville, pet supplies Newfoundland, pet store Trans Canada Highway, pet store near me NL, dog food Clarenville, cat food NL, aquarium supplies Newfoundland, fish store Clarenville, reptile supplies NL, bird supplies, aquarium maintenance NL, Boreal, Catit, Oven Baked Tradition, Fluval, East Coast Pets">
 
   <!-- Open Graph / Facebook -->
   <meta property="og:title" content="East Coast Pets | Pet Supplies in Clarenville, NL">
-  <meta property="og:description" content="Your local pet supply store in Clarenville, NL. East Coast Pets offers premium products from Boreal, Catit, and other top brands for all your pet needs.">
+  <meta property="og:description" content="Your pet supply stop near the Trans-Canada Highway in Clarenville, NL. Just 2.4 km via Manitoba Drive. Premium food, treats & supplies for dogs, cats, fish, reptiles and more.">
   <meta property="og:url" content="https://www.eastcoastpets.ca">
   <meta property="og:image" content="https://www.eastcoastpets.ca/assets/img/branding/og-image.webp">
   <meta property="og:image:secure_url" content="https://www.eastcoastpets.ca/assets/img/branding/og-image.webp">
@@ -28,7 +34,7 @@
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="East Coast Pets | Pet Supplies in Clarenville, NL">
-  <meta name="twitter:description" content="Your local pet supply store in Clarenville, NL. East Coast Pets offers premium products from Boreal, Catit, and other top brands for all your pet needs.">
+  <meta name="twitter:description" content="Your pet supply stop near the Trans-Canada Highway in Clarenville, NL. Just 2.4 km via Manitoba Drive. Premium food, treats & supplies for dogs, cats, fish, reptiles and more.">
   <meta name="twitter:image" content="https://www.eastcoastpets.ca/assets/img/branding/og-image.webp">
   <meta name="twitter:image:alt" content="East Coast Pets Storefront">
   <meta name="twitter:site" content="@EastCoastPetsNL">
@@ -40,13 +46,13 @@
     "@context": "https://schema.org",
     "@type": "PetStore",
     "name": "East Coast Pets",
-    "description": "Your local pet supply store in Clarenville, NL. East Coast Pets offers premium products from Boreal, Catit, and other top brands for all your pet needs.",
+    "description": "Your pet supply stop near the Trans-Canada Highway in Clarenville, NL. Just 2.4 km via Manitoba Drive. Premium food, treats & supplies for dogs, cats, fish, reptiles and more.",
     "address": {
       "@type": "PostalAddress",
       "streetAddress": "256 Memorial Dr",
       "addressLocality": "Clarenville",
       "addressRegion": "NL",
-      "postalCode": "A5A 1R5",
+      "postalCode": "A5A 1N9",
       "addressCountry": "CA"
     },
     "geo": {
@@ -65,21 +71,31 @@
       {
         "@type": "OpeningHoursSpecification",
         "dayOfWeek": "Thursday",
-        "opens": "11:00",
-        "closes": "19:00"
+        "opens": "12:00",
+        "closes": "20:00"
       },
       {
         "@type": "OpeningHoursSpecification",
         "dayOfWeek": "Saturday",
-        "opens": "11:00",
-        "closes": "17:00"
-      }
+        "opens": "12:00",
+        "closes": "18:00"
+      },
     ],
+    "hasMap": "https://www.google.com/maps/place/East+Coast+Pets/@48.1618,-53.9699,17z/",
+    "areaServed": {
+      "@type": "GeoCircle",
+      "geoMidpoint": {
+        "@type": "GeoCoordinates",
+        "latitude": 48.1618,
+        "longitude": -53.9699
+      },
+      "geoRadius": "50000"
+    },
     "url": "https://www.eastcoastpets.ca",
     "sameAs": [
-      "https://www.facebook.com/EastCoastPetsNL",
-      "https://www.instagram.com/eastcoastpetsnl",
-      "https://twitter.com/EastCoastPetsNL"
+      "https://www.facebook.com/profile.php?id=61552427828292",
+      "https://www.youtube.com/@EastCoastPets",
+      "https://www.tiktok.com/@eastcoastpets"
     ],
     "image": "https://www.eastcoastpets.ca/assets/img/branding/og-image.webp",
     "priceRange": "$$"
@@ -111,43 +127,94 @@
   <!-- Preload Critical Assets -->
   <link rel="preload" href="assets/css/styles.css" as="style">
 
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@600;700;800&display=swap">
+
   <!-- Stylesheets -->
   <link rel="stylesheet" href="assets/css/styles.css">
 
-  <!-- DNS Prefetch and Preconnect -->
-  <link rel="dns-prefetch" href="https://www.eastcoastpets.ca">
-  <link rel="preconnect" href="https://www.eastcoastpets.ca" crossorigin>
 </head>
 <body>
-  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
   <header class="site-header" role="banner">
-    <div class="logo">
-      <a href="#hero" aria-label="East Coast Pets Home">
-        <img src="assets/img/branding/ecp-logo.webp" alt="East Coast Pets Logo" loading="lazy">
-      </a>
+    <div class="header-inner">
+      <div class="logo">
+        <a href="#hero" aria-label="East Coast Pets Home">
+          <img src="assets/img/branding/ecp-logo.webp" alt="East Coast Pets Logo">
+        </a>
+      </div>
+      <button class="nav-toggle" aria-label="Open navigation menu" aria-expanded="false" aria-controls="main-nav" type="button">
+        <span class="nav-toggle-bar"></span>
+        <span class="nav-toggle-bar"></span>
+        <span class="nav-toggle-bar"></span>
+      </button>
+      <nav id="main-nav" class="main-nav" role="navigation" aria-label="Main navigation">
+        <a href="#about" class="nav-link">About</a>
+        <a href="#brands" class="nav-link">Brands</a>
+        <a href="#services" class="nav-link">Services</a>
+        <a href="#gallery" class="nav-link">Gallery</a>
+        <a href="#contact" class="nav-link">Contact</a>
+      </nav>
     </div>
   </header>
 
   <main id="main-content" role="main">
     <section id="hero" aria-labelledby="hero-heading">
-      <img src="assets/img/branding/ecp-main.webp" alt="East Coast Pets Store Exterior" class="hero-bg" loading="lazy">
-      <h1 id="hero-heading">Welcome to East Coast Pets</h1>
-      <p>Clarenville's local pet store for every creature, great and small.</p>
-      <a href="#contact" class="btn" role="button">Contact us</a>
+      <img src="assets/img/branding/ecp-main.webp" alt="East Coast Pets Store Exterior" class="hero-bg">
+      <h1 id="hero-heading">Your Pet Supply Stop<br>Near the Trans-Canada</h1>
+      <p>Premium food, treats & supplies for every pet — just off the highway in Clarenville, NL.</p>
+      <div class="hero-actions">
+        <a href="tel:+17094661222" class="btn">Call Now</a>
+        <a href="#about" class="btn btn-outline">Learn More</a>
+      </div>
     </section>
 
     <section id="about" class="info-section" aria-labelledby="about-heading">
       <h2 id="about-heading">About Us</h2>
-      <p>Visit us at <strong>256 Memorial Dr, Clarenville, NL</strong>, where our knowledgeable team provides expert advice, premium foods, and supplies for fish, reptiles, birds, and mammals.</p>
+      <p>Whether you live nearby or you're passing through on the Trans-Canada, we're easy to find — just 2.4 km off the highway via <strong>Manitoba Drive</strong>. We carry trusted brands, quality products, and honest advice from people who actually keep pets.</p>
+      <div class="pet-categories">
+        <div class="pet-card">
+          <span class="pet-icon" aria-hidden="true">🐶</span>
+          <h3>Dogs</h3>
+          <p>Premium food, treats & accessories</p>
+        </div>
+        <div class="pet-card">
+          <span class="pet-icon" aria-hidden="true">🐱</span>
+          <h3>Cats</h3>
+          <p>Nutrition, litter & toys</p>
+        </div>
+        <div class="pet-card">
+          <span class="pet-icon" aria-hidden="true">🐠</span>
+          <h3>Fish</h3>
+          <p>Aquariums, food & care</p>
+        </div>
+        <div class="pet-card">
+          <span class="pet-icon" aria-hidden="true">🦎</span>
+          <h3>Reptiles</h3>
+          <p>Habitats, heat & food</p>
+        </div>
+        <div class="pet-card">
+          <span class="pet-icon" aria-hidden="true">🐦</span>
+          <h3>Birds</h3>
+          <p>Seed, cages & supplies</p>
+        </div>
+        <div class="pet-card">
+          <span class="pet-icon" aria-hidden="true">🐹</span>
+          <h3>Small Animals</h3>
+          <p>Bedding, food & habitats</p>
+        </div>
+      </div>
       <div class="hours-container">
         <h3>Store Hours</h3>
         <ul class="hours" aria-label="Store hours of operation">
-          <li role="listitem"><span class="day">Monday–Tuesday</span><span class="hours-text">12pm–7pm</span></li>
-          <li role="listitem"><span class="day">Wednesday</span><span class="hours-text">12pm–7pm</span></li>
-          <li role="listitem"><span class="day">Thursday</span><span class="hours-text">12pm–8pm</span></li>
-          <li role="listitem"><span class="day">Friday</span><span class="hours-text">12pm–7pm</span></li>
-          <li role="listitem"><span class="day">Saturday</span><span class="hours-text">12pm–6pm</span></li>
-          <li role="listitem"><span class="day">Sunday</span><span class="hours-text">Closed</span></li>
+          <li><span class="day">Mon – Wed</span><span class="hours-text">12 pm – 7 pm</span></li>
+          <li><span class="day">Thursday</span><span class="hours-text">12 pm – 8 pm</span></li>
+          <li><span class="day">Friday</span><span class="hours-text">12 pm – 7 pm</span></li>
+          <li><span class="day">Saturday</span><span class="hours-text">12 pm – 6 pm</span></li>
+          <li><span class="day">Sunday</span><span class="hours-text">Closed</span></li>
         </ul>
       </div>
     </section>
@@ -170,13 +237,33 @@
                 <p>Catit</p>
               </a>
             </div>
-            <!-- Dog Brands -->
             <div class="brand-slide" itemprop="itemListElement" itemscope itemtype="http://schema.org/Brand">
-              <a href="https://bigcountryraw.ca/" target="_blank" rel="noopener noreferrer">
-                <img src="assets/img/branding/pet-brands/dog/big-country.webp" alt="Big Country Raw Dog Food Logo at East Coast Pets Clarenville" loading="lazy">
-                <p>Big Country Raw</p>
+              <a>
+                <img src="assets/img/branding/pet-brands/cat/budz.webp" alt="Budz Pet Products Logo at East Coast Pets Clarenville" loading="lazy">
+                <p>Budz</p>
               </a>
             </div>
+
+            <div class="brand-slide" itemprop="itemListElement" itemscope itemtype="http://schema.org/Brand">
+              <a href="https://www.kaytee.com/" target="_blank" rel="noopener noreferrer">
+                <img src="assets/img/branding/pet-brands/cat/kaytee.webp" alt="Kaytee Small Animal & Bird Products Logo at East Coast Pets Clarenville" loading="lazy">
+                <p>Kaytee</p>
+              </a>
+            </div>
+
+            <div class="brand-slide" itemprop="itemListElement" itemscope itemtype="http://schema.org/Brand">
+              <a href="https://tikipets.com/" target="_blank" rel="noopener noreferrer">
+                <img src="assets/img/branding/pet-brands/cat/tiki-cat.webp" alt="Tiki Cat Pet Food Logo at East Coast Pets Clarenville" loading="lazy">
+                <p>Tiki Cat</p>
+              </a>
+            </div>
+            <div class="brand-slide" itemprop="itemListElement" itemscope itemtype="http://schema.org/Brand">
+              <a href="https://www.zupreem.com/" target="_blank" rel="noopener noreferrer">
+                <img src="assets/img/branding/pet-brands/cat/zu-preem.webp" alt="ZuPreem Bird & Small Animal Food Logo at East Coast Pets Clarenville" loading="lazy">
+                <p>ZuPreem</p>
+              </a>
+            </div>
+            <!-- Dog Brands -->
             <div class="brand-slide" itemprop="itemListElement" itemscope itemtype="http://schema.org/Brand">
               <a href="https://boldbynature.com/" target="_blank" rel="noopener noreferrer">
                 <img src="assets/img/branding/pet-brands/dog/bold.webp" alt="Bold By Nature Raw Pet Food Logo at East Coast Pets Clarenville" loading="lazy">
@@ -190,27 +277,9 @@
               </a>
             </div>
             <div class="brand-slide" itemprop="itemListElement" itemscope itemtype="http://schema.org/Brand">
-              <a href="https://www.ettasays.com/" target="_blank" rel="noopener noreferrer">
-                <img src="assets/img/branding/pet-brands/dog/etta-says.webp" alt="Etta Says Dog Chews Logo at East Coast Pets Clarenville" loading="lazy">
-                <p>Etta Says</p>
-              </a>
-            </div>
-            <div class="brand-slide" itemprop="itemListElement" itemscope itemtype="http://schema.org/Brand">
               <a href="https://www.intersand.com/" target="_blank" rel="noopener noreferrer">
                 <img src="assets/img/branding/pet-brands/dog/instersand.webp" alt="Intersand Cat Litter Logo at East Coast Pets Clarenville" loading="lazy">
                 <p>Intersand</p>
-              </a>
-            </div>
-            <div class="brand-slide" itemprop="itemListElement" itemscope itemtype="http://schema.org/Brand">
-              <a href="https://fieldcrestfarms.com/" target="_blank" rel="noopener noreferrer">
-                <img src="assets/img/branding/pet-brands/dog/field-crest.webp" alt="Field Crest Farms Pet Treats Logo at East Coast Pets Clarenville" loading="lazy">
-                <p>Field Crest Farms</p>
-              </a>
-            </div>
-            <div class="brand-slide" itemprop="itemListElement" itemscope itemtype="http://schema.org/Brand">
-              <a href="https://www.wellnesspetfood.com/" target="_blank" rel="noopener noreferrer">
-                <img src="assets/img/branding/pet-brands/dog/wellness.webp" alt="Wellness Pet Food Logo at East Coast Pets Clarenville" loading="lazy">
-                <p>Wellness</p>
               </a>
             </div>
             <div class="brand-slide" itemprop="itemListElement" itemscope itemtype="http://schema.org/Brand">
@@ -226,9 +295,27 @@
               </a>
             </div>
             <div class="brand-slide" itemprop="itemListElement" itemscope itemtype="http://schema.org/Brand">
+              <a>
+                <img src="assets/img/branding/pet-brands/dog/crafty-beast.webp" alt="Crafty Beast Pet Products Logo at East Coast Pets Clarenville" loading="lazy">
+                <p>Crafty Beast</p>
+              </a>
+            </div>
+            <div class="brand-slide" itemprop="itemListElement" itemscope itemtype="http://schema.org/Brand">
+              <a href="https://www.ettasays.com/" target="_blank" rel="noopener noreferrer">
+                <img src="assets/img/branding/pet-brands/dog/etta-says.webp" alt="Etta Says Dog Treats Logo at East Coast Pets Clarenville" loading="lazy">
+                <p>Etta Says</p>
+              </a>
+            </div>
+            <div class="brand-slide" itemprop="itemListElement" itemscope itemtype="http://schema.org/Brand">
+              <a>
+                <img src="assets/img/branding/pet-brands/dog/field-crest.webp" alt="Fieldcrest Pet Products Logo at East Coast Pets Clarenville" loading="lazy">
+                <p>Fieldcrest</p>
+              </a>
+            </div>
+            <div class="brand-slide" itemprop="itemListElement" itemscope itemtype="http://schema.org/Brand">
               <a href="https://www.kongcompany.com/" target="_blank" rel="noopener noreferrer">
-                <img src="assets/img/branding/pet-brands/dog/kong.webp" alt="Kong Dog Toys Logo at East Coast Pets Clarenville" loading="lazy">
-                <p>Kong</p>
+                <img src="assets/img/branding/pet-brands/dog/kong.webp" alt="KONG Dog Toys Logo at East Coast Pets Clarenville" loading="lazy">
+                <p>KONG</p>
               </a>
             </div>
             <div class="brand-slide" itemprop="itemListElement" itemscope itemtype="http://schema.org/Brand">
@@ -237,13 +324,27 @@
                 <p>Nylabone</p>
               </a>
             </div>
-            <!-- Miscellaneous Pet Brands -->
+
+            <!-- Treat Brands -->
             <div class="brand-slide" itemprop="itemListElement" itemscope itemtype="http://schema.org/Brand">
-              <a href="https://bionicpets.com/" target="_blank" rel="noopener noreferrer">
-                <img src="assets/img/branding/pet-brands/misc/bionic.webp" alt="Bionic Pet Toys Logo at East Coast Pets Clarenville" loading="lazy">
-                <p>Bionic</p>
+              <a href="https://www.jaysgourmet.com/" target="_blank" rel="noopener noreferrer">
+                <img src="assets/img/branding/pet-brands/dog/Jays.webp" alt="Jay's Gourmet Dog & Cat Treats Logo at East Coast Pets Clarenville" loading="lazy">
+                <p>Jay's Gourmet</p>
               </a>
             </div>
+            <div class="brand-slide" itemprop="itemListElement" itemscope itemtype="http://schema.org/Brand">
+              <a href="https://www.greenies.com/" target="_blank" rel="noopener noreferrer">
+                <img src="assets/img/branding/pet-brands/dog/Greenies-Logo.png" alt="Greenies Dog & Cat Treats Logo at East Coast Pets Clarenville" loading="lazy">
+                <p>Greenies</p>
+              </a>
+            </div>
+            <div class="brand-slide" itemprop="itemListElement" itemscope itemtype="http://schema.org/Brand">
+              <a href="https://www.purebites.com/" target="_blank" rel="noopener noreferrer">
+                <img src="assets/img/branding/pet-brands/dog/pure-bites.webp" alt="PureBites Freeze-Dried Pet Treats Logo at East Coast Pets Clarenville" loading="lazy">
+                <p>PureBites</p>
+              </a>
+            </div>
+            <!-- Miscellaneous Pet Brands -->
             <div class="brand-slide" itemprop="itemListElement" itemscope itemtype="http://schema.org/Brand">
               <a href="https://www.hagen.com/living-world" target="_blank" rel="noopener noreferrer">
                 <img src="assets/img/branding/pet-brands/misc/living-world.webp" alt="Living World Small Pet Products Logo at East Coast Pets Clarenville" loading="lazy">
@@ -256,10 +357,66 @@
                 <p>Martin Little Friends</p>
               </a>
             </div>
+
+            <div class="brand-slide" itemprop="itemListElement" itemscope itemtype="http://schema.org/Brand">
+              <a>
+                <img src="assets/img/branding/pet-brands/misc/bionic.webp" alt="Bionic Pet Products Logo at East Coast Pets Clarenville" loading="lazy">
+                <p>Bionic</p>
+              </a>
+            </div>
             <div class="brand-slide" itemprop="itemListElement" itemscope itemtype="http://schema.org/Brand">
               <a href="https://www.oxbowanimalhealth.com/" target="_blank" rel="noopener noreferrer">
-                <img src="assets/img/branding/pet-brands/misc/oxbow.webp" alt="Oxbow Small Animal Food Logo at East Coast Pets Clarenville" loading="lazy">
+                <img src="assets/img/branding/pet-brands/misc/oxbow.webp" alt="Oxbow Animal Health Small Pet Products Logo at East Coast Pets Clarenville" loading="lazy">
                 <p>Oxbow</p>
+              </a>
+            </div>
+            <div class="brand-slide" itemprop="itemListElement" itemscope itemtype="http://schema.org/Brand">
+              <a href="https://www.marshallpet.com/" target="_blank" rel="noopener noreferrer">
+                <img src="assets/img/branding/pet-brands/misc/marshall-ferret-foods.jpg" alt="Marshall Ferret Foods Logo at East Coast Pets Clarenville" loading="lazy">
+                <p>Marshall Ferret Foods</p>
+              </a>
+            </div>
+            <div class="brand-slide" itemprop="itemListElement" itemscope itemtype="http://schema.org/Brand">
+              <a href="https://www.arcadiareptile.com/" target="_blank" rel="noopener noreferrer">
+                <img src="assets/img/branding/pet-brands/misc/arcadia-lighting.jpg" alt="Arcadia Lighting Logo at East Coast Pets Clarenville" loading="lazy">
+                <p>Arcadia Lighting</p>
+              </a>
+            </div>
+            <!-- Reptile Brands -->
+            <div class="brand-slide" itemprop="itemListElement" itemscope itemtype="http://schema.org/Brand">
+              <a href="https://www.exo-terra.com/" target="_blank" rel="noopener noreferrer">
+                <img src="assets/img/branding/pet-brands/reptile/exo-terra.webp" alt="Exo Terra Reptile Habitat Logo at East Coast Pets Clarenville" loading="lazy">
+                <p>Exo Terra</p>
+              </a>
+            </div>
+            <div class="brand-slide" itemprop="itemListElement" itemscope itemtype="http://schema.org/Brand">
+              <a href="https://www.flukersfarms.com/" target="_blank" rel="noopener noreferrer">
+                <img src="assets/img/branding/pet-brands/reptile/fluckers.webp" alt="Fluker's Reptile Products Logo at East Coast Pets Clarenville" loading="lazy">
+                <p>Fluker's</p>
+              </a>
+            </div>
+            <div class="brand-slide" itemprop="itemListElement" itemscope itemtype="http://schema.org/Brand">
+              <a href="https://www.pangeareptile.com/" target="_blank" rel="noopener noreferrer">
+                <img src="assets/img/branding/pet-brands/reptile/pangea.webp" alt="Pangea Reptile Food Logo at East Coast Pets Clarenville" loading="lazy">
+                <p>Pangea</p>
+              </a>
+            </div>
+            <div class="brand-slide" itemprop="itemListElement" itemscope itemtype="http://schema.org/Brand">
+              <a href="https://repashy.com/" target="_blank" rel="noopener noreferrer">
+                <img src="assets/img/branding/pet-brands/reptile/repashy.webp" alt="Repashy Reptile Food Logo at East Coast Pets Clarenville" loading="lazy">
+                <p>Repashy</p>
+              </a>
+            </div>
+            <div class="brand-slide" itemprop="itemListElement" itemscope itemtype="http://schema.org/Brand">
+              <a href="https://www.zillarules.com/" target="_blank" rel="noopener noreferrer">
+                <img src="assets/img/branding/pet-brands/reptile/zilla.webp" alt="Zilla Reptile Habitat Logo at East Coast Pets Clarenville" loading="lazy">
+                <p>Zilla</p>
+              </a>
+            </div>
+            <div class="brand-slide" itemprop="itemListElement" itemscope itemtype="http://schema.org/Brand">
+              <a href="https://zoomed.com/" target="_blank" rel="noopener noreferrer">
+                <img src="assets/img/branding/pet-brands/reptile/zoo-med.webp" alt="Zoo Med Reptile Products Logo at East Coast Pets Clarenville" loading="lazy">
+                <p>Zoo Med</p>
               </a>
             </div>
             <!-- Fish Brands -->
@@ -347,7 +504,99 @@
                 <p>Instant Ocean</p>
               </a>
             </div>
+            <div class="brand-slide" itemprop="itemListElement" itemscope itemtype="http://schema.org/Brand">
+              <a href="https://www.hikariusa.com/" target="_blank" rel="noopener noreferrer">
+                <img src="assets/img/branding/pet-brands/fish/hikari.webp" alt="Hikari Fish Food Logo at East Coast Pets Clarenville" loading="lazy">
+                <p>Hikari</p>
+              </a>
+            </div>
+            <div class="brand-slide" itemprop="itemListElement" itemscope itemtype="http://schema.org/Brand">
+              <a>
+                <img src="assets/img/branding/pet-brands/fish/kordon.webp" alt="Kordon Aquarium Products Logo at East Coast Pets Clarenville" loading="lazy">
+                <p>Kordon</p>
+              </a>
+            </div>
           </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="services" class="services-section" aria-labelledby="services-heading">
+      <div class="services-container">
+        <h2 id="services-heading">Aquarium Services</h2>
+        <p class="services-tagline">Residential &amp; Commercial</p>
+        <p class="services-intro">We handle the maintenance so you can enjoy a clean, thriving tank year-round — at home or in your business.</p>
+
+        <div class="services-grid">
+          <div class="service-card service-basic">
+            <div class="service-tier">Basic Clean</div>
+            <div class="service-price">$50–$75<span>/hr</span></div>
+            <ul class="service-features">
+              <li>10%–15% water change</li>
+              <li>Algae cleaning</li>
+              <li>Filter check</li>
+            </ul>
+          </div>
+
+          <div class="service-card service-standard">
+            <div class="service-badge">Popular</div>
+            <div class="service-tier">Standard Monthly</div>
+            <div class="service-price">$125–$150+<span>/hr</span></div>
+            <ul class="service-features">
+              <li>25%+ water change</li>
+              <li>Water testing</li>
+              <li>Algae cleaning</li>
+              <li>Filter maintenance &amp; cleaning</li>
+              <li>Chemical dosing (if needed)</li>
+            </ul>
+          </div>
+
+          <div class="service-card service-premium">
+            <div class="service-badge">Premium</div>
+            <div class="service-tier">Saltwater &amp; Planted Tanks</div>
+            <div class="service-price">$175–$250+<span>/hr</span></div>
+            <ul class="service-features">
+              <li>25%+ water change</li>
+              <li>Water testing</li>
+              <li>Algae cleaning</li>
+              <li>Filter maintenance &amp; cleaning</li>
+              <li>Chemical dosing</li>
+              <li>Aquascaping &amp; planting</li>
+              <li>Coral care</li>
+              <li>Equipment maintenance</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="services-perfect-for">
+          <h3>Perfect For</h3>
+          <div class="perfect-for-grid">
+            <div class="perfect-for-item">
+              <span class="perfect-for-icon" aria-hidden="true">🏡</span>
+              <span>Homes</span>
+            </div>
+            <div class="perfect-for-item">
+              <span class="perfect-for-icon" aria-hidden="true">🏢</span>
+              <span>Offices &amp; Waiting Rooms</span>
+            </div>
+            <div class="perfect-for-item">
+              <span class="perfect-for-icon" aria-hidden="true">🍽️</span>
+              <span>Restaurants</span>
+            </div>
+            <div class="perfect-for-item">
+              <span class="perfect-for-icon" aria-hidden="true">🏫</span>
+              <span>Schools &amp; Public Spaces</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="services-cta">
+          <p>Reliable. Professional. Experienced with freshwater &amp; saltwater systems.</p>
+          <div class="services-cta-buttons">
+            <a href="tel:+17094661222" class="btn-services">📞 Call (709) 466-1222</a>
+            <a href="https://www.facebook.com/profile.php?id=61552427828292" target="_blank" rel="noopener" class="btn-services btn-services-outline">💬 Message on Facebook</a>
+          </div>
+          <p class="services-urgency">Spots are limited — book now to get on our regular maintenance schedule!</p>
         </div>
       </div>
     </section>
@@ -357,7 +606,7 @@
       <div class="carousel-container">
         <div class="gallery-carousel" id="galleryCarousel" role="region" aria-label="Photo gallery carousel">
           <div class="gallery-slide">
-            <img src="assets/img/featured/oxbow.webp" alt="Colorful assortment of Oxbow products on shelves at East Coast Pets" loading="lazy">
+            <img src="assets/img/featured/Fish-Supplies.webp" alt="Fish supplies and aquarium products at East Coast Pets" loading="lazy">
           </div>
           <div class="gallery-slide">
             <img src="assets/img/featured/boreal.webp" alt="Colorful assortment of Boreal dog treats on shelves at East Coast Pets" loading="lazy">
@@ -383,18 +632,29 @@
           <div class="gallery-slide">
             <img src="assets/img/featured/oven-treat.webp" alt="Colorful assortment of Oven Baked Tradition treats on shelves at East Coast Pets" loading="lazy">
           </div>
-          <div class="gallery-slide">
-            <img src="assets/img/featured/oxbow.webp" alt="Colorful assortment of Oxbow products on shelves at East Coast Pets" loading="lazy">
-          </div>
         </div>
       </div>
     </section>
 
     <section id="contact" class="info-section" aria-labelledby="contact-heading">
       <h2 id="contact-heading">Contact Us</h2>
-      <p>Phone: <a href="tel:+17094661222" aria-label="Call East Coast Pets at (709) 466-1222">(709) 466-1222</a></p>
-      <p>Email: <a href="mailto:eastcoastpets@outlook.com" aria-label="Email East Coast Pets">eastcoastpets@outlook.com</a></p>
-      <p><a href="https://g.co/kgs/QSLmZuu" target="_blank" rel="noopener" aria-label="Leave a Google Review for East Coast Pets">Leave us a Google Review</a></p>
+      <div class="contact-cards">
+        <a href="tel:+17094661222" class="contact-card" aria-label="Call East Coast Pets at (709) 466-1222">
+          <span class="contact-icon" aria-hidden="true">📞</span>
+          <span class="contact-label">Phone</span>
+          <span class="contact-value">(709) 466-1222</span>
+        </a>
+        <a href="mailto:eastcoastpets@outlook.com" class="contact-card" aria-label="Email East Coast Pets">
+          <span class="contact-icon" aria-hidden="true">✉️</span>
+          <span class="contact-label">Email</span>
+          <span class="contact-value">eastcoastpets@outlook.com</span>
+        </a>
+        <a href="https://g.co/kgs/QSLmZuu" target="_blank" rel="noopener" class="contact-card" aria-label="Leave a Google Review for East Coast Pets">
+          <span class="contact-icon" aria-hidden="true">⭐</span>
+          <span class="contact-label">Reviews</span>
+          <span class="contact-value">Leave a Google Review</span>
+        </a>
+      </div>
       <div class="social-buttons" role="navigation" aria-label="Social media links">
         <a class="social-button" href="https://www.facebook.com/profile.php?id=61552427828292" target="_blank" rel="noopener" aria-label="Visit East Coast Pets on Facebook">
           <img src="assets/img/branding/social-icons/facebook.webp" alt="" class="social-icon" loading="lazy">
@@ -411,7 +671,6 @@
           src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2661.2957151685623!2d-53.971977223152955!3d48.162381649433314!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4b7479ce09268143%3A0xa04b6aa9ab459e6f!2sEast%20Coast%20Pets!5e0!3m2!1sen!2sca!4v1746853133534!5m2!1sen!2sca" 
           width="100%" 
           height="300" 
-          style="border:0;" 
           allowfullscreen="" 
           loading="lazy" 
           referrerpolicy="no-referrer-when-downgrade" 
@@ -421,12 +680,30 @@
     </section>
   </main>
 
+  <button class="back-to-top" aria-label="Back to top" type="button">
+    <svg viewBox="0 0 24 24"><polyline points="18 15 12 9 6 15"></polyline></svg>
+  </button>
+
   <footer class="site-footer" role="contentinfo">
-    <p>© 2025 East Coast Pets. All rights reserved.</p>
-    <a href="/assets/legal/legal.html" class="legal-link" aria-label="View legal information">Legal</a>
+    <div class="footer-content">
+      <div class="footer-brand">
+        <img src="assets/img/branding/ecp-logo.webp" alt="East Coast Pets" class="footer-logo" loading="lazy">
+        <p>Clarenville's local pet supply store.</p>
+      </div>
+      <div class="footer-info">
+        <p><strong>256 Memorial Dr, Clarenville, NL A5A 1N9</strong></p>
+        <p>(709) 466-1222</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; <span id="year"></span> East Coast Pets. All rights reserved.</p>
+      <a href="/assets/legal/legal.html" class="legal-link" aria-label="View legal information">Legal</a>
+      <p class="powered-by">Website by <a href="https://sages.services" target="_blank" rel="noopener noreferrer">Sages Services</a></p>
+    </div>
   </footer>
 
   <script src="assets/js/script.js" defer></script>
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
 </body>
 
 </html>
