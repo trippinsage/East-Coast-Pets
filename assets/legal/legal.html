@@ -40,14 +40,14 @@
   <link rel="alternate" hreflang="x-default" href="https://www.eastcoastpets.ca/assets/legal/legal.html">
 
   <!-- Favicon and Icons -->
-  <link rel="shortcut icon" href="/assets/img/branding/favicon_io/favicon.ico" type="image/x-icon">
-  <link rel="apple-touch-icon" sizes="180x180" href="/assets/img/branding/favicon_io/apple-touch-icon.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/assets/img/branding/favicon_io/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/assets/img/branding/favicon_io/favicon-16x16.png">
-  <link rel="manifest" href="/assets/img/branding/favicon_io/site.webmanifest">
+  <link rel="shortcut icon" href="../img/branding/favicon_io/favicon.ico" type="image/x-icon">
+  <link rel="apple-touch-icon" sizes="180x180" href="../img/branding/favicon_io/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="../img/branding/favicon_io/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="../img/branding/favicon_io/favicon-16x16.png">
+  <link rel="manifest" href="../img/branding/favicon_io/site.webmanifest">
 
   <!-- Preload Critical Assets -->
-  <link rel="preload" href="/assets/css/styles.css" as="style">
+  <link rel="preload" href="../css/styles.css" as="style">
 
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -55,7 +55,7 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@600;700;800&display=swap">
 
   <!-- Stylesheet -->
-  <link rel="stylesheet" href="/assets/css/styles.css">
+  <link rel="stylesheet" href="../css/styles.css">
 </head>
 <body>
   <a class="skip-link" href="#main-content">Skip to main content</a>
@@ -63,8 +63,8 @@
   <header class="site-header" role="banner">
     <div class="header-inner">
       <div class="logo">
-        <a href="/index.html" aria-label="East Coast Pets Home">
-          <img src="/assets/img/branding/ecp-logo.webp" alt="East Coast Pets Logo" loading="lazy">
+        <a href="../../index.html" aria-label="East Coast Pets Home">
+          <img src="../img/branding/ecp-logo.webp" alt="East Coast Pets Logo" loading="lazy">
         </a>
       </div>
       <button class="nav-toggle" aria-label="Open navigation menu" aria-expanded="false" aria-controls="main-nav" type="button">
@@ -73,10 +73,13 @@
         <span class="nav-toggle-bar"></span>
       </button>
       <nav id="main-nav" class="main-nav" role="navigation" aria-label="Main navigation">
-        <a href="/index.html#about" class="nav-link">About</a>
-        <a href="/index.html#brands" class="nav-link">Brands</a>
-        <a href="/index.html#gallery" class="nav-link">Gallery</a>
-        <a href="/index.html#contact" class="nav-link">Contact</a>
+        <a href="../../index.html" class="nav-link">Home</a>
+        <a href="../../index.html#about" class="nav-link">About</a>
+        <a href="../../index.html#live-animals" class="nav-link">Live Animals</a>
+        <a href="../../index.html#brands" class="nav-link">Brands</a>
+        <a href="../../index.html#services" class="nav-link">Services</a>
+        <a href="../../index.html#gallery" class="nav-link">Gallery</a>
+        <a href="../../index.html#contact" class="nav-link">Contact</a>
       </nav>
     </div>
   </header>
@@ -85,23 +88,23 @@
     <h1>Legal Information</h1>
     <p class="legal-updated">Last updated: March 28, 2026</p>
 
-    <nav class="legal-nav" aria-label="Legal page navigation">
-      <a href="#terms">Terms of Service</a>
-      <a href="#privacy">Privacy Policy</a>
-      <a href="#cookies">Cookie Policy</a>
-      <a href="#disclaimer">Disclaimer</a>
-      <a href="#accessibility">Accessibility</a>
-    </nav>
+    <div class="legal-tabs" role="tablist" aria-label="Legal information tabs">
+      <button class="legal-tab active" role="tab" aria-selected="true" aria-controls="tab-terms" id="btn-terms" type="button">Terms of Service</button>
+      <button class="legal-tab" role="tab" aria-selected="false" aria-controls="tab-privacy" id="btn-privacy" type="button" tabindex="-1">Privacy Policy</button>
+      <button class="legal-tab" role="tab" aria-selected="false" aria-controls="tab-cookies" id="btn-cookies" type="button" tabindex="-1">Cookie Policy</button>
+      <button class="legal-tab" role="tab" aria-selected="false" aria-controls="tab-disclaimer" id="btn-disclaimer" type="button" tabindex="-1">Disclaimer</button>
+      <button class="legal-tab" role="tab" aria-selected="false" aria-controls="tab-accessibility" id="btn-accessibility" type="button" tabindex="-1">Accessibility</button>
+    </div>
 
     <!-- ═══════════════════════════════════════════
          TERMS OF SERVICE
          ═══════════════════════════════════════════ -->
-    <section id="terms" aria-labelledby="terms-heading">
+    <section id="tab-terms" class="legal-tab-panel" role="tabpanel" aria-labelledby="btn-terms">
       <h2 id="terms-heading">Terms of Service</h2>
       <p>Welcome to the East Coast Pets website (<a href="https://www.eastcoastpets.ca">www.eastcoastpets.ca</a>). By accessing or using this website, you agree to be bound by the following Terms of Service. If you do not agree to these terms, please do not use this website.</p>
 
       <h3>1. About East Coast Pets</h3>
-      <p>East Coast Pets is a retail pet supply store located at 256 Memorial Dr, Clarenville, NL A5A 1R5, Canada. This website provides information about our store, products, brands, and services. We do not currently offer online sales or e-commerce through this website.</p>
+      <p>East Coast Pets is a retail pet supply store located at 256 Memorial Dr, Clarenville, NL A5A 1N9, Canada. This website provides information about our store, products, brands, and services. We do not currently offer online sales or e-commerce through this website.</p>
 
       <h3>2. Acceptance of Terms</h3>
       <p>By visiting, browsing, or otherwise using this website, you acknowledge that you have read, understood, and agree to be bound by these Terms of Service and our Privacy Policy. We reserve the right to modify these terms at any time. Continued use of the site following any changes constitutes acceptance of those changes.</p>
@@ -149,14 +152,14 @@
       <ul>
         <li><strong>Email:</strong> <a href="mailto:eastcoastpets@outlook.com">eastcoastpets@outlook.com</a></li>
         <li><strong>Phone:</strong> <a href="tel:+17094661222">(709) 466-1222</a></li>
-        <li><strong>Address:</strong> 256 Memorial Dr, Clarenville, NL A5A 1R5, Canada</li>
+        <li><strong>Address:</strong> 256 Memorial Dr, Clarenville, NL A5A 1N9, Canada</li>
       </ul>
     </section>
 
     <!-- ═══════════════════════════════════════════
          PRIVACY POLICY
          ═══════════════════════════════════════════ -->
-    <section id="privacy" aria-labelledby="privacy-heading">
+    <section id="tab-privacy" class="legal-tab-panel" role="tabpanel" aria-labelledby="btn-privacy" hidden>
       <h2 id="privacy-heading">Privacy Policy</h2>
       <p>East Coast Pets ("we," "us," or "our") is committed to protecting the privacy of visitors to our website. This Privacy Policy describes the types of information we may collect, how we use it, and the measures we take to safeguard it. This policy applies to information collected through <a href="https://www.eastcoastpets.ca">www.eastcoastpets.ca</a> only.</p>
 
@@ -221,14 +224,14 @@
       <ul>
         <li><strong>Email:</strong> <a href="mailto:eastcoastpets@outlook.com">eastcoastpets@outlook.com</a></li>
         <li><strong>Phone:</strong> <a href="tel:+17094661222">(709) 466-1222</a></li>
-        <li><strong>Address:</strong> 256 Memorial Dr, Clarenville, NL A5A 1R5, Canada</li>
+        <li><strong>Address:</strong> 256 Memorial Dr, Clarenville, NL A5A 1N9, Canada</li>
       </ul>
     </section>
 
     <!-- ═══════════════════════════════════════════
          COOKIE POLICY
          ═══════════════════════════════════════════ -->
-    <section id="cookies" aria-labelledby="cookies-heading">
+    <section id="tab-cookies" class="legal-tab-panel" role="tabpanel" aria-labelledby="btn-cookies" hidden>
       <h2 id="cookies-heading">Cookie Policy</h2>
       <p>This Cookie Policy explains how East Coast Pets uses cookies and similar tracking technologies on our website.</p>
 
@@ -266,7 +269,7 @@
     <!-- ═══════════════════════════════════════════
          DISCLAIMER
          ═══════════════════════════════════════════ -->
-    <section id="disclaimer" aria-labelledby="disclaimer-heading">
+    <section id="tab-disclaimer" class="legal-tab-panel" role="tabpanel" aria-labelledby="btn-disclaimer" hidden>
       <h2 id="disclaimer-heading">Disclaimer</h2>
 
       <h3>1. General Disclaimer</h3>
@@ -288,7 +291,7 @@
     <!-- ═══════════════════════════════════════════
          ACCESSIBILITY STATEMENT
          ═══════════════════════════════════════════ -->
-    <section id="accessibility" aria-labelledby="accessibility-heading">
+    <section id="tab-accessibility" class="legal-tab-panel" role="tabpanel" aria-labelledby="btn-accessibility" hidden>
       <h2 id="accessibility-heading">Accessibility Statement</h2>
       <p>East Coast Pets is committed to ensuring that our website is accessible to all visitors, including those with disabilities. We strive to conform to the <a href="https://www.w3.org/WAI/standards-guidelines/wcag/" target="_blank" rel="noopener noreferrer">Web Content Accessibility Guidelines (WCAG) 2.1</a> Level AA standards.</p>
 
@@ -316,21 +319,21 @@
   <footer class="site-footer" role="contentinfo">
     <div class="footer-content">
       <div class="footer-brand">
-        <img src="/assets/img/branding/ecp-logo.webp" alt="East Coast Pets" class="footer-logo" loading="lazy">
+        <img src="../img/branding/ecp-logo.webp" alt="East Coast Pets" class="footer-logo" loading="lazy">
         <p>Clarenville's local pet store for every creature, great and small.</p>
       </div>
       <div class="footer-info">
-        <p><strong>256 Memorial Dr, Clarenville, NL A5A 1R5</strong></p>
+        <p><strong>256 Memorial Dr, Clarenville, NL A5A 1N9</strong></p>
         <p>(709) 466-1222</p>
       </div>
     </div>
     <div class="footer-bottom">
       <p>&copy; <span id="year"></span> East Coast Pets. All rights reserved.</p>
-      <a href="/index.html" class="legal-link" aria-label="Return to East Coast Pets Home">Home</a>
+      <a href="../../index.html" class="legal-link" aria-label="Return to East Coast Pets Home">Home</a>
     </div>
   </footer>
 
-  <script src="/assets/js/script.js" defer></script>
+  <script src="../js/script.js" defer></script>
   <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
 </body>
 </html>

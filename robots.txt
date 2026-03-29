@@ -7,8 +7,4 @@ Sitemap: https://www.eastcoastpets.ca/sitemap.xml
 Disallow: /assets/tmp/
 Disallow: /assets/private/
 
-# Crawl-delay for slower bots (optional)
-Crawl-delay: 5
-
-# Additional helpful metadata
 Host: www.eastcoastpets.ca
