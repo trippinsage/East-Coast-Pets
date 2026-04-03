@@ -60,13 +60,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // --- Carousels ---
   initCarousels(prefersReducedMotion);
+
+  // --- Animal fact ticker ---
+  initAnimalFacts();
 });
 
 /* ---- Small media decoding/perf optimizations ---- */
 function optimizeImages() {
   document.querySelectorAll('img[loading="lazy"]').forEach(img => {
     if (!img.hasAttribute('decoding')) img.setAttribute('decoding', 'async');
-    if (!img.hasAttribute('fetchpriority')) img.setAttribute('fetchpriority', 'low');
   });
 }
 
@@ -307,10 +309,10 @@ function initMobileNav(prefersReducedMotion) {
 /* ---- Scroll reveal + staggered children ---- */
 function initScrollReveal(prefersReducedMotion) {
   const revealEls = document.querySelectorAll(
-    '.info-section, .brands-section, .services-section, .gallery-section, .hours-container, .live-animals-section'
+    '.info-section, .brands-section, .services-section, .gallery-section, .hours-container, .live-animals-section, .why-us-section, .faq-section, .in-store-section'
   );
   const staggerEls = document.querySelectorAll(
-    '.pet-categories, .services-grid, .contact-cards, .perfect-for-grid, .hours, .housing-grid'
+    '.pet-categories, .services-grid, .contact-cards, .perfect-for-grid, .hours, .housing-grid, .why-us-grid, .faq-list'
   );
 
   if (prefersReducedMotion) {
@@ -330,6 +332,19 @@ function initScrollReveal(prefersReducedMotion) {
   }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
   revealEls.forEach(el => revealObs.observe(el));
 
+  // Pre-load lazy images before their section scrolls into view
+  const preloadObs = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.querySelectorAll('img[loading="lazy"]').forEach(img => {
+          img.loading = 'eager';
+        });
+        preloadObs.unobserve(entry.target);
+      }
+    });
+  }, { rootMargin: '0px 0px 300px 0px' });
+  revealEls.forEach(el => preloadObs.observe(el));
+
   staggerEls.forEach(el => el.classList.add('stagger-children'));
   const staggerObs = new IntersectionObserver(entries => {
     entries.forEach(entry => {
@@ -347,6 +362,9 @@ function initLightbox() {
   const slides = document.querySelectorAll('.gallery-slide img');
   if (slides.length === 0) return;
 
+  const slideArray = Array.from(slides);
+  let currentIndex = 0;
+
   const overlay = document.createElement('div');
   overlay.className = 'lightbox-overlay';
   overlay.setAttribute('role', 'dialog');
@@ -360,9 +378,15 @@ function initLightbox() {
   const img = overlay.querySelector('img');
   const closeBtn = overlay.querySelector('.lightbox-close');
 
-  function open(src, alt) {
-    img.src = src;
-    img.alt = alt;
+  function show(index) {
+    currentIndex = (index + slideArray.length) % slideArray.length;
+    const source = slideArray[currentIndex];
+    img.src = source.src;
+    img.alt = source.alt;
+  }
+
+  function open(index) {
+    show(index);
     overlay.classList.add('active');
     document.body.style.overflow = 'hidden';
     closeBtn.focus();
@@ -373,43 +397,155 @@ function initLightbox() {
     document.body.style.overflow = '';
   }
 
-  slides.forEach(slide => {
+  slideArray.forEach((slide, i) => {
     slide.style.cursor = 'zoom-in';
-    slide.addEventListener('click', () => open(slide.src, slide.alt));
+    slide.addEventListener('click', () => open(i));
   });
 
   closeBtn.addEventListener('click', close);
   overlay.addEventListener('click', e => { if (e.target === overlay) close(); });
+
+  // Touch swipe support
+  let touchStartX = 0;
+  overlay.addEventListener('touchstart', e => {
+    touchStartX = e.touches[0].clientX;
+  }, { passive: true });
+  overlay.addEventListener('touchend', e => {
+    const dx = e.changedTouches[0].clientX - touchStartX;
+    if (Math.abs(dx) > 50) {
+      if (dx < 0) show(currentIndex + 1);
+      else show(currentIndex - 1);
+    }
+  }, { passive: true });
+
   document.addEventListener('keydown', e => {
-    if (e.key === 'Escape' && overlay.classList.contains('active')) close();
+    if (!overlay.classList.contains('active')) return;
+    if (e.key === 'Escape') close();
+    else if (e.key === 'ArrowRight') show(currentIndex + 1);
+    else if (e.key === 'ArrowLeft') show(currentIndex - 1);
   });
 }
 
 /* ---- Accordion (Live Animals section) ---- */
 function initAccordion() {
-  const triggers = document.querySelectorAll('.accordion-trigger');
-  if (triggers.length === 0) return;
+  const items = document.querySelectorAll('.accordion-item');
+  if (items.length === 0) return;
 
-  triggers.forEach(trigger => {
+  // Remove any hidden attributes so CSS max-height controls visibility
+  items.forEach(item => {
+    const panel = item.querySelector('.accordion-panel');
+    if (panel) {
+      panel.removeAttribute('hidden');
+      panel.setAttribute('aria-hidden', 'true');
+    }
+  });
+
+  items.forEach(item => {
+    const trigger = item.querySelector('.accordion-trigger');
+    const panel = item.querySelector('.accordion-panel');
+    if (!trigger || !panel) return;
+
     trigger.addEventListener('click', () => {
-      const expanded = trigger.getAttribute('aria-expanded') === 'true';
-      const panel = document.getElementById(trigger.getAttribute('aria-controls'));
-      if (!panel) return;
+      const isOpen = trigger.getAttribute('aria-expanded') === 'true';
 
-      // Close all others first
-      triggers.forEach(other => {
-        if (other !== trigger) {
-          other.setAttribute('aria-expanded', 'false');
-          const otherPanel = document.getElementById(other.getAttribute('aria-controls'));
-          if (otherPanel) otherPanel.hidden = true;
+      // Close all other panels
+      items.forEach(other => {
+        const ot = other.querySelector('.accordion-trigger');
+        const op = other.querySelector('.accordion-panel');
+        if (ot && ot !== trigger) {
+          ot.setAttribute('aria-expanded', 'false');
+          if (op) { op.classList.remove('is-open'); op.setAttribute('aria-hidden', 'true'); }
         }
       });
 
       // Toggle clicked
-      trigger.setAttribute('aria-expanded', String(!expanded));
-      panel.hidden = expanded;
+      trigger.setAttribute('aria-expanded', isOpen ? 'false' : 'true');
+      panel.classList.toggle('is-open', !isOpen);
+      panel.setAttribute('aria-hidden', isOpen ? 'true' : 'false');
     });
   });
+}
+
+/* ---- Animal fact ticker ---- */
+function initAnimalFacts() {
+  const display = document.getElementById('factDisplay');
+  const nextBtn = document.querySelector('.fact-next');
+  if (!display) return;
+
+  const facts = [
+    // Reptiles
+    { emoji: '🐍', text: 'Ball pythons can live over 30 years with proper care — they genuinely become lifelong companions.' },
+    { emoji: '🦎', text: 'Axolotls can fully regenerate their limbs, spinal cord, and even portions of their heart and brain.' },
+    { emoji: '🦎', text: 'Crested geckos were thought extinct until 1994, rediscovered on a single island in New Caledonia.' },
+    { emoji: '🦎', text: 'Leopard geckos store fat reserves in their tails — a plump tail is a sure sign of a well-fed gecko.' },
+    { emoji: '🦎', text: 'Bearded dragons wave one arm as a social signal — it\'s their way of saying "I see you, we\'re good."' },
+    { emoji: '🐍', text: 'Corn snakes are docile, beginner-friendly, and come in hundreds of selectively bred colour morphs — one of the most varied snakes in the hobby.' },
+    { emoji: '🐊', text: 'Blue-tongued skinks use their vivid tongue to startle predators — they\'re bluffing almost every time.' },
+    // Fish
+    { emoji: '🐠', text: 'Clownfish are born male — the dominant fish in the group can change sex to become female.' },
+    { emoji: '🐟', text: 'Bettas breathe air directly using a labyrinth organ — they\'ll surface for oxygen just like we do.' },
+    { emoji: '🐡', text: 'Male bettas recognise their own reflection and will flare their fins at a mirror for minutes on end.' },
+    { emoji: '🐟', text: 'Goldfish have a memory span of at least three months — the "3-second memory" is a complete myth.' },
+    { emoji: '🐠', text: 'Neon tetras school together to confuse predators; in a planted tank they look like moving starlight.' },
+    { emoji: '🐡', text: 'Dwarf puffer fish are fully freshwater, intensely intelligent, and will beg for food from their keeper.' },
+    { emoji: '🐡', text: 'Discus are called the "king of aquarium fish" — they\'re extremely sensitive to water quality and worth it.' },
+    // Invertebrates
+    { emoji: '🦐', text: 'Cherry shrimp graze on algae and biofilm 24 hours a day — nature\'s perfect aquarium cleaning crew.' },
+    { emoji: '🐚', text: 'Nerite snails are exceptional algae eaters and, uniquely, won\'t reproduce in freshwater — so they\'ll never overrun a tank.' },
+    { emoji: '🦀', text: 'Vampire crabs are semi-terrestrial and get their name from their striking glowing yellow eyes — they need a paludarium with both land and water areas.' },
+    { emoji: '🦐', text: 'Amano shrimp are among the most effective algae eaters in the freshwater hobby — a small group can visibly clean up a tank in a matter of days.' },
+    // Birds
+    { emoji: '🐦', text: 'Budgies are the world\'s best talking birds — some individuals have mastered over 1,700 distinct words.' },
+    { emoji: '🦜', text: 'Cockatiels recognise their owners by voice and face, and often greet them with a unique personal song.' },
+    { emoji: '🐦', text: 'Budgies need 3–4 hours of out-of-cage time daily — flight and play are essential for their wellbeing.' },
+    { emoji: '🦜', text: 'Lovebirds mate for life and can pine away if separated from their bonded partner for too long.' },
+    // Dogs & cats
+    { emoji: '🐶', text: 'Dogs\' sense of smell is up to 100,000× more sensitive than ours — they can detect illness, emotion, and even the passage of time.' },
+    { emoji: '🐱', text: 'Cats have 32 muscles in each ear, letting them rotate each ear independently to pinpoint sound.' },
+    { emoji: '🐱', text: 'A cat\'s purr vibrates at 25–50 Hz — the same frequency range shown to aid healing in bone tissue.' },
+    // Small animals
+    { emoji: '🐹', text: 'Hamsters can run up to 8 km on a wheel in a single night — a wheel isn\'t optional, it\'s essential.' },
+    { emoji: '🐰', text: 'Rabbits binky — leap and twist mid-air — as a pure expression of joy. A binkying rabbit is a happy rabbit.' },
+    { emoji: '🐹', text: 'Guinea pigs \'popcorn\' — spontaneous little hops and spins — when they\'re excited or content.' },
+    // Care tips
+    { emoji: '💧', text: 'Skipping the nitrogen cycle kills fish. Cycling a tank takes 4–6 weeks — patience is the most important fish-keeping skill.' },
+    { emoji: '🌡️', text: 'Reptiles can\'t regulate their own temperature. A proper thermal gradient — warm side and cool side — is non-negotiable.' },
+    { emoji: '🌿', text: 'Live plants in an aquarium outcompete algae for nutrients, boost dissolved oxygen levels, and measurably reduce fish stress.' },
+    { emoji: '🐾', text: 'Adding freeze-dried or raw food toppers to dry kibble significantly improves dental health and coat condition.' },
+    { emoji: '🫧', text: 'Overfeeding is the #1 cause of poor water quality in fish tanks — feed small amounts and remove uneaten food.' },
+  ];
+
+  let current = 0;
+  let timer;
+
+  function startTimer() {
+    clearInterval(timer);
+    timer = setInterval(() => {
+      current = (current + 1) % facts.length;
+      showFact(current);
+    }, 9000);
+  }
+
+  function showFact(index) {
+    display.classList.add('fade-out');
+    setTimeout(() => {
+      display.textContent = facts[index].emoji + '\u2002' + facts[index].text;
+      display.classList.remove('fade-out');
+      display.classList.add('fade-in');
+      setTimeout(() => display.classList.remove('fade-in'), 400);
+    }, 350);
+  }
+
+  showFact(current);
+  startTimer();
+
+  if (nextBtn) {
+    nextBtn.addEventListener('click', () => {
+      current = (current + 1) % facts.length;
+      showFact(current);
+      startTimer(); // reset the auto-cycle timer on manual advance
+    });
+  }
 }
 
 /* ---- Legal page tabs ---- */
@@ -480,6 +616,7 @@ function initCarousels(prefersReducedMotion) {
 
     setupScrollHandling(carousel, liveRegion);
     setupDragScroll(carousel);
+    setupKeyboardNav(carousel);
     if (!prefersReducedMotion) setupAutoScroll(carousel);
   });
 }
@@ -560,6 +697,26 @@ function setupDragScroll(carousel) {
       hasDragged = false;
     }
   }, true);
+}
+
+function setupKeyboardNav(carousel) {
+  // Make carousel focusable so it can receive keyboard events
+  if (!carousel.getAttribute('tabindex')) carousel.setAttribute('tabindex', '0');
+
+  carousel.addEventListener('keydown', e => {
+    const slides = carousel.querySelectorAll('.brand-slide, .gallery-slide');
+    if (slides.length === 0) return;
+    const gap = parseFloat(getComputedStyle(carousel).gap) || 0;
+    const step = slides[0].offsetWidth + gap;
+
+    if (e.key === 'ArrowRight') {
+      e.preventDefault();
+      carousel.scrollBy({ left: step, behavior: 'smooth' });
+    } else if (e.key === 'ArrowLeft') {
+      e.preventDefault();
+      carousel.scrollBy({ left: -step, behavior: 'smooth' });
+    }
+  });
 }
 
 function setupAutoScroll(carousel) {
