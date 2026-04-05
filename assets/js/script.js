@@ -468,84 +468,298 @@ function initAccordion() {
 
 /* ---- Animal fact ticker ---- */
 function initAnimalFacts() {
-  const display = document.getElementById('factDisplay');
-  const nextBtn = document.querySelector('.fact-next');
+  const display    = document.getElementById('factDisplay');
+  const emojiEl    = document.getElementById('factEmoji');
+  const tagEl      = document.getElementById('factTag');
+  const counterEl  = document.getElementById('factCounter');
+  const progressEl = document.getElementById('factProgressBar');
+  const nextBtn    = document.querySelector('.fact-next');
+  const prevBtn    = document.querySelector('.fact-prev');
+  const catBtns    = document.querySelectorAll('.fact-cat');
+  const card       = document.querySelector('.fact-card');
   if (!display) return;
 
+  const CYCLE_MS = 10000;    // auto-advance interval
+  const FADE_MS  = 300;      // fade-out duration
+
   const facts = [
-    // Reptiles
-    { emoji: '🐍', text: 'Ball pythons can live over 30 years with proper care — they genuinely become lifelong companions.' },
-    { emoji: '🦎', text: 'Axolotls can fully regenerate their limbs, spinal cord, and even portions of their heart and brain.' },
-    { emoji: '🦎', text: 'Crested geckos were thought extinct until 1994, rediscovered on a single island in New Caledonia.' },
-    { emoji: '🦎', text: 'Leopard geckos store fat reserves in their tails — a plump tail is a sure sign of a well-fed gecko.' },
-    { emoji: '🦎', text: 'Bearded dragons wave one arm as a social signal — it\'s their way of saying "I see you, we\'re good."' },
-    { emoji: '🐍', text: 'Corn snakes are docile, beginner-friendly, and come in hundreds of selectively bred colour morphs — one of the most varied snakes in the hobby.' },
-    { emoji: '🐊', text: 'Blue-tongued skinks use their vivid tongue to startle predators — they\'re bluffing almost every time.' },
-    // Fish
-    { emoji: '🐠', text: 'Clownfish are born male — the dominant fish in the group can change sex to become female.' },
-    { emoji: '🐟', text: 'Bettas breathe air directly using a labyrinth organ — they\'ll surface for oxygen just like we do.' },
-    { emoji: '🐡', text: 'Male bettas recognise their own reflection and will flare their fins at a mirror for minutes on end.' },
-    { emoji: '🐟', text: 'Goldfish have a memory span of at least three months — the "3-second memory" is a complete myth.' },
-    { emoji: '🐠', text: 'Neon tetras school together to confuse predators; in a planted tank they look like moving starlight.' },
-    { emoji: '🐡', text: 'Dwarf puffer fish are fully freshwater, intensely intelligent, and will beg for food from their keeper.' },
-    { emoji: '🐡', text: 'Discus are called the "king of aquarium fish" — they\'re extremely sensitive to water quality and worth it.' },
-    // Invertebrates
-    { emoji: '🦐', text: 'Cherry shrimp graze on algae and biofilm 24 hours a day — nature\'s perfect aquarium cleaning crew.' },
-    { emoji: '🐚', text: 'Nerite snails are exceptional algae eaters and, uniquely, won\'t reproduce in freshwater — so they\'ll never overrun a tank.' },
-    { emoji: '🦀', text: 'Vampire crabs are semi-terrestrial and get their name from their striking glowing yellow eyes — they need a paludarium with both land and water areas.' },
-    { emoji: '🦐', text: 'Amano shrimp are among the most effective algae eaters in the freshwater hobby — a small group can visibly clean up a tank in a matter of days.' },
-    // Birds
-    { emoji: '🐦', text: 'Budgies are the world\'s best talking birds — some individuals have mastered over 1,700 distinct words.' },
-    { emoji: '🦜', text: 'Cockatiels recognise their owners by voice and face, and often greet them with a unique personal song.' },
-    { emoji: '🐦', text: 'Budgies need 3–4 hours of out-of-cage time daily — flight and play are essential for their wellbeing.' },
-    { emoji: '🦜', text: 'Lovebirds mate for life and can pine away if separated from their bonded partner for too long.' },
-    // Dogs & cats
-    { emoji: '🐶', text: 'Dogs\' sense of smell is up to 100,000× more sensitive than ours — they can detect illness, emotion, and even the passage of time.' },
-    { emoji: '🐱', text: 'Cats have 32 muscles in each ear, letting them rotate each ear independently to pinpoint sound.' },
-    { emoji: '🐱', text: 'A cat\'s purr vibrates at 25–50 Hz — the same frequency range shown to aid healing in bone tissue.' },
-    // Small animals
-    { emoji: '🐹', text: 'Hamsters can run up to 8 km on a wheel in a single night — a wheel isn\'t optional, it\'s essential.' },
-    { emoji: '🐰', text: 'Rabbits binky — leap and twist mid-air — as a pure expression of joy. A binkying rabbit is a happy rabbit.' },
-    { emoji: '🐹', text: 'Guinea pigs \'popcorn\' — spontaneous little hops and spins — when they\'re excited or content.' },
-    // Care tips
-    { emoji: '💧', text: 'Skipping the nitrogen cycle kills fish. Cycling a tank takes 4–6 weeks — patience is the most important fish-keeping skill.' },
-    { emoji: '🌡️', text: 'Reptiles can\'t regulate their own temperature. A proper thermal gradient — warm side and cool side — is non-negotiable.' },
-    { emoji: '🌿', text: 'Live plants in an aquarium outcompete algae for nutrients, boost dissolved oxygen levels, and measurably reduce fish stress.' },
-    { emoji: '🐾', text: 'Adding freeze-dried or raw food toppers to dry kibble significantly improves dental health and coat condition.' },
-    { emoji: '🫧', text: 'Overfeeding is the #1 cause of poor water quality in fish tanks — feed small amounts and remove uneaten food.' },
+    // ---- Reptiles ----
+    { cat: 'reptile', emoji: '🐍', tag: 'Reptile', text: 'Ball pythons can live over 30 years with proper care, making them genuine lifelong companions.' },
+    { cat: 'reptile', emoji: '🦎', tag: 'Reptile', text: 'Axolotls can regenerate their limbs, spinal cord, and even parts of their heart and brain.' },
+    { cat: 'reptile', emoji: '🦎', tag: 'Reptile', text: 'Crested geckos were thought extinct until 1994 when they were rediscovered in New Caledonia.' },
+    { cat: 'reptile', emoji: '🦎', tag: 'Reptile', text: 'Leopard geckos store fat in their tails. A plump tail means a healthy, well-fed gecko.' },
+    { cat: 'reptile', emoji: '🦎', tag: 'Reptile', text: 'Bearded dragons wave one arm as a social signal, essentially saying "I see you, we\'re good."' },
+    { cat: 'reptile', emoji: '🐍', tag: 'Reptile', text: 'Corn snakes are docile, beginner-friendly, and come in hundreds of selectively bred colour morphs.' },
+    { cat: 'reptile', emoji: '🐊', tag: 'Reptile', text: 'Blue-tongued skinks flash their vivid tongue to startle predators. It\'s a bluff almost every time.' },
+    { cat: 'reptile', emoji: '🦎', tag: 'Reptile', text: 'Chameleons change colour to communicate mood and regulate temperature, not for camouflage.' },
+    { cat: 'reptile', emoji: '🐍', tag: 'Reptile', text: 'Hognose snakes play dead when threatened, dramatically rolling belly-up to sell the act.' },
+    { cat: 'reptile', emoji: '🦎', tag: 'Reptile', text: 'Gargoyle geckos are named for their horn-like cranial bumps. They\'re fully arboreal and very calm.' },
+    { cat: 'reptile', emoji: '🐢', tag: 'Reptile', text: 'A turtle\'s shell contains about 60 fused bones covered in keratin scutes. It\'s literally part of the skeleton.' },
+    { cat: 'reptile', emoji: '🦎', tag: 'Reptile', text: 'Tokay geckos are among the loudest reptiles. Their "to-kay!" bark can be heard across a room.' },
+    { cat: 'reptile', emoji: '🐍', tag: 'Reptile', text: 'Ball pythons are ambush hunters. In captivity they prefer snug hides that touch their body on all sides.' },
+    { cat: 'reptile', emoji: '🦎', tag: 'Reptile', text: 'Bearded dragons need a basking spot of 38\u201343 \u00b0C and full-spectrum UVB to stay healthy long-term.' },
+
+    // ---- Fish ----
+    { cat: 'fish', emoji: '🐠', tag: 'Fish', text: 'Clownfish are all born male. The dominant individual in a group changes sex to become female.' },
+    { cat: 'fish', emoji: '🐟', tag: 'Fish', text: 'Bettas breathe air using a labyrinth organ and will surface for oxygen just like we do.' },
+    { cat: 'fish', emoji: '🐡', tag: 'Fish', text: 'Male bettas recognise their own reflection and will flare aggressively at a mirror for minutes.' },
+    { cat: 'fish', emoji: '🐟', tag: 'Fish', text: 'Goldfish remember things for at least three months. The "3-second memory" myth is completely false.' },
+    { cat: 'fish', emoji: '🐠', tag: 'Fish', text: 'Neon tetras school together to confuse predators. In a planted tank, they look like moving starlight.' },
+    { cat: 'fish', emoji: '🐡', tag: 'Fish', text: 'Dwarf puffers are fully freshwater, surprisingly intelligent, and will beg their keeper for food.' },
+    { cat: 'fish', emoji: '🐡', tag: 'Fish', text: 'Discus are called the "king of aquarium fish" due to their beauty and demanding water requirements.' },
+    { cat: 'fish', emoji: '🐟', tag: 'Fish', text: 'Corydoras catfish "blink" by tilting their eyes downward, making them one of the few fish with visible expressions.' },
+    { cat: 'fish', emoji: '🐠', tag: 'Fish', text: 'Otocinclus are gentle dwarf catfish that graze algae nonstop, perfect for planted tank clean-up.' },
+    { cat: 'fish', emoji: '🐟', tag: 'Fish', text: 'Kuhli loaches are nocturnal and eel-shaped. They burrow into substrate and thrive in groups.' },
+    { cat: 'fish', emoji: '🐠', tag: 'Fish', text: 'Rainbowfish display their brightest colours at dawn when competing for mates. It\'s a daily light show in your tank.' },
+    { cat: 'fish', emoji: '🐟', tag: 'Fish', text: 'Plecos have bony armour plates instead of scales, and some species live well over 20 years.' },
+    { cat: 'fish', emoji: '🐠', tag: 'Fish', text: 'A single goldfish needs at least a 75-litre tank. Bowls are far too small and stunt their growth.' },
+    { cat: 'fish', emoji: '🐟', tag: 'Fish', text: 'Guppies reproduce incredibly fast. One female can produce 20\u201360 fry every 30 days.' },
+
+    // ---- Invertebrates ----
+    { cat: 'invert', emoji: '🦐', tag: 'Invertebrate', text: 'Cherry shrimp graze on algae and biofilm around the clock, making them nature\'s perfect tank cleaning crew.' },
+    { cat: 'invert', emoji: '🐚', tag: 'Invertebrate', text: 'Nerite snails eat algae voraciously but can\'t breed in freshwater, so they\'ll never overrun your tank.' },
+    { cat: 'invert', emoji: '🦀', tag: 'Invertebrate', text: 'Vampire crabs have striking yellow eyes and need a paludarium with both land and water zones.' },
+    { cat: 'invert', emoji: '🦐', tag: 'Invertebrate', text: 'A small group of Amano shrimp can visibly clear algae from a tank in just a few days.' },
+    { cat: 'invert', emoji: '🦐', tag: 'Invertebrate', text: 'Blue Bolt shrimp are selectively bred from Taiwan Bee lines and require very soft, acidic water.' },
+    { cat: 'invert', emoji: '🐚', tag: 'Invertebrate', text: 'Mystery snails breathe air and will cruise to the surface for a gulp, unlike most aquatic snails.' },
+    { cat: 'invert', emoji: '🦐', tag: 'Invertebrate', text: 'Bamboo shrimp are filter feeders that fan feathery appendages into the current to catch micro-food.' },
+    { cat: 'invert', emoji: '🦀', tag: 'Invertebrate', text: 'Thai micro crabs are only about 1 cm wide and live entirely underwater. They\'re true hidden gems of the hobby.' },
+    { cat: 'invert', emoji: '🦐', tag: 'Invertebrate', text: 'Shrimp are sensitive to copper. Always check medications and fertilisers for copper before dosing a shrimp tank.' },
+    { cat: 'invert', emoji: '🐚', tag: 'Invertebrate', text: 'Snails need calcium-rich water or supplements to keep their shells strong. Cuttlebone works great.' },
+
+    // ---- Birds ----
+    { cat: 'bird', emoji: '🐦', tag: 'Bird', text: 'Budgies are the world\'s best talking birds. Some individuals have learned over 1,700 words.' },
+    { cat: 'bird', emoji: '🦜', tag: 'Bird', text: 'Cockatiels recognise their owners by voice and face, often greeting them with a unique song.' },
+    { cat: 'bird', emoji: '🐦', tag: 'Bird', text: 'Budgies need 3\u20134 hours of out-of-cage time daily. Flight and play are vital for their health.' },
+    { cat: 'bird', emoji: '🦜', tag: 'Bird', text: 'Lovebirds mate for life and can pine away if separated from their bonded partner too long.' },
+    { cat: 'bird', emoji: '🐦', tag: 'Bird', text: 'Finches communicate through complex songs, and males rehearse new melodies throughout their lives.' },
+    { cat: 'bird', emoji: '🦜', tag: 'Bird', text: 'Conures are nicknamed the "clowns of the bird world" because they hang upside down, roll over, and dance.' },
+    { cat: 'bird', emoji: '🐦', tag: 'Bird', text: 'Canaries were used in coal mines as gas detectors. Their sensitivity to toxins saved countless lives.' },
+    { cat: 'bird', emoji: '🦜', tag: 'Bird', text: 'Parrots have two toes forward and two back, giving them an incredibly precise grip for climbing.' },
+    { cat: 'bird', emoji: '🐦', tag: 'Bird', text: 'Non-stick cookware fumes can be fatal to birds. Always keep birds out of the kitchen when cooking.' },
+    { cat: 'bird', emoji: '🦜', tag: 'Bird', text: 'A seed-only diet shortens a bird\'s lifespan. Pellets, fresh vegetables, and fruit make a balanced meal.' },
+
+    // ---- Dogs ----
+    { cat: 'dog', emoji: '🐶', tag: 'Dog', text: 'A dog\'s sense of smell is up to 100,000\u00d7 more sensitive than a human\'s.' },
+    { cat: 'dog', emoji: '🐶', tag: 'Dog', text: 'Every dog\'s nose print is unique. Like a human fingerprint, no two are alike.' },
+    { cat: 'dog', emoji: '🐶', tag: 'Dog', text: 'Dogs can understand around 250 words, count to five, and even do simple arithmetic.' },
+    { cat: 'dog', emoji: '🐶', tag: 'Dog', text: 'Puppies are born both deaf and blind. Their ears and eyes don\'t open until about two weeks old.' },
+    { cat: 'dog', emoji: '🐶', tag: 'Dog', text: 'Dogs curl up when sleeping to protect their organs, an instinct inherited from their wild ancestors.' },
+    { cat: 'dog', emoji: '🐶', tag: 'Dog', text: 'A Greyhound can hit 72 km/h in three strides, making it the second-fastest land animal.' },
+    { cat: 'dog', emoji: '🐶', tag: 'Dog', text: 'Grapes, raisins, chocolate, and xylitol are all toxic to dogs. Keep these out of reach at all times.' },
+    { cat: 'dog', emoji: '🐶', tag: 'Dog', text: 'Daily walks aren\'t just exercise. Sniffing new scents is mental enrichment that reduces anxiety.' },
+    { cat: 'dog', emoji: '🐶', tag: 'Dog', text: 'Rotating protein sources in your dog\'s diet can reduce the risk of food sensitivities over time.' },
+    { cat: 'dog', emoji: '🐶', tag: 'Dog', text: 'Dental disease affects over 80% of dogs by age three. Dental chews and regular brushing help prevent it.' },
+
+    // ---- Cats ----
+    { cat: 'cat', emoji: '🐱', tag: 'Cat', text: 'Cats have 32 muscles per ear, letting them rotate each one independently to pinpoint sounds.' },
+    { cat: 'cat', emoji: '🐱', tag: 'Cat', text: 'A cat\'s purr vibrates at 25\u201350 Hz, the same frequency range known to promote bone healing.' },
+    { cat: 'cat', emoji: '🐱', tag: 'Cat', text: 'Cats spend about 70% of their lives asleep. That\'s roughly 13\u201316 hours every single day.' },
+    { cat: 'cat', emoji: '🐱', tag: 'Cat', text: 'A group of cats is a "clowder." A group of kittens? That\'s called a "kindle."' },
+    { cat: 'cat', emoji: '🐱', tag: 'Cat', text: 'Cat whiskers detect tiny changes in air current, helping them navigate in complete darkness.' },
+    { cat: 'cat', emoji: '🐱', tag: 'Cat', text: 'Cats slow-blink at people they trust. Return the blink and you\'re speaking their language.' },
+    { cat: 'cat', emoji: '🐱', tag: 'Cat', text: 'Lilies, even the pollen, are extremely toxic to cats. A single nibble can cause kidney failure.' },
+    { cat: 'cat', emoji: '🐱', tag: 'Cat', text: 'The rule of thumb for litter boxes is one per cat, plus one extra. Placement matters too.' },
+    { cat: 'cat', emoji: '🐱', tag: 'Cat', text: 'Wet food helps cats stay hydrated because they naturally have a low thirst drive.' },
+    { cat: 'cat', emoji: '🐱', tag: 'Cat', text: 'Scratching posts aren\'t a luxury. Cats need them to shed claw sheaths, stretch, and mark territory.' },
+
+    // ---- Small Pets ----
+    { cat: 'small', emoji: '🐹', tag: 'Small Pet', text: 'Hamsters run up to 8 km on their wheel each night. A proper wheel isn\'t optional, it\'s essential.' },
+    { cat: 'small', emoji: '🐰', tag: 'Small Pet', text: 'Rabbits "binky" by leaping and twisting mid-air. It\'s a pure expression of happiness.' },
+    { cat: 'small', emoji: '🐹', tag: 'Small Pet', text: 'Guinea pigs "popcorn" with spontaneous hops and spins when they\'re excited or content.' },
+    { cat: 'small', emoji: '🐹', tag: 'Small Pet', text: 'A hamster\'s cheek pouches stretch all the way back to its hips, carrying food equal to its body weight.' },
+    { cat: 'small', emoji: '🐰', tag: 'Small Pet', text: 'Rabbit teeth never stop growing. Unlimited hay keeps them worn down safely.' },
+    { cat: 'small', emoji: '🐹', tag: 'Small Pet', text: 'Guinea pigs should never live alone. In Switzerland it\'s actually illegal to keep just one.' },
+    { cat: 'small', emoji: '🐭', tag: 'Small Pet', text: 'Gerbils thump their hind legs to warn the colony of danger. It\'s their built-in alarm system.' },
+    { cat: 'small', emoji: '🐰', tag: 'Small Pet', text: 'A rabbit\'s field of vision is nearly 360\u00b0, so they can see behind themselves without turning.' },
+    { cat: 'small', emoji: '🐹', tag: 'Small Pet', text: 'Guinea pigs can\'t make their own vitamin C. Fresh bell peppers and leafy greens are a daily must.' },
+    { cat: 'small', emoji: '🐹', tag: 'Small Pet', text: 'Wire-bottom cages cause sore hocks in rabbits and guinea pigs. Solid flooring with soft bedding is safest.' },
+
+    // ---- Care Tips ----
+    { cat: 'care', emoji: '💧', tag: 'Care Tip', text: 'Never skip the nitrogen cycle. It takes 4\u20136 weeks, but it\'s the #1 factor in keeping fish alive.' },
+    { cat: 'care', emoji: '🌡️', tag: 'Care Tip', text: 'Reptiles can\'t self-regulate temperature. A proper warm-side/cool-side gradient is non-negotiable.' },
+    { cat: 'care', emoji: '🌿', tag: 'Care Tip', text: 'Live aquarium plants outcompete algae, boost oxygen, and visibly reduce fish stress.' },
+    { cat: 'care', emoji: '🐾', tag: 'Care Tip', text: 'Raw or freeze-dried food toppers on kibble can improve dental health and coat condition.' },
+    { cat: 'care', emoji: '🫧', tag: 'Care Tip', text: 'Overfeeding is the #1 cause of poor water quality. Feed small amounts and remove leftovers.' },
+    { cat: 'care', emoji: '🧪', tag: 'Care Tip', text: 'Test aquarium water weekly with a liquid kit. pH, ammonia, nitrite, and nitrate are the essentials.' },
+    { cat: 'care', emoji: '💡', tag: 'Care Tip', text: 'Without UVB lighting, most reptiles can\'t metabolise calcium, which leads to metabolic bone disease.' },
+    { cat: 'care', emoji: '🪵', tag: 'Care Tip', text: 'Bioactive setups use live plants, isopods, and natural substrate to create self-cleaning habitats.' },
+    { cat: 'care', emoji: '🔄', tag: 'Care Tip', text: 'Change 20\u201330% of aquarium water weekly. Consistency matters more than volume.' },
+    { cat: 'care', emoji: '🏠', tag: 'Care Tip', text: 'A single hamster needs at least 600 sq in of floor space. Most pet-store cages are too small.' },
+    { cat: 'care', emoji: '🥬', tag: 'Care Tip', text: 'A rabbit\'s primary diet should be unlimited hay. Pellets and greens are supplements, not staples.' },
+    { cat: 'care', emoji: '🧊', tag: 'Care Tip', text: 'Never release pets into local waterways. It spreads disease and introduces invasive species.' },
+    { cat: 'care', emoji: '🪨', tag: 'Care Tip', text: 'Isopods and springtails in a bioactive vivarium break down waste, reducing manual cleaning.' },
+    { cat: 'care', emoji: '🩺', tag: 'Care Tip', text: 'Annual vet check-ups apply to exotic pets too. Early detection saves reptile, bird, and small mammal lives.' },
+    { cat: 'care', emoji: '🌡️', tag: 'Care Tip', text: 'Use a thermostat on every heat source. Unregulated heat mats and bulbs can overheat and burn reptiles.' },
+    { cat: 'care', emoji: '🐟', tag: 'Care Tip', text: 'Acclimate new fish slowly by floating the bag and gradually mixing tank water in. Temperature shock kills.' },
+    { cat: 'care', emoji: '🪴', tag: 'Care Tip', text: 'Quarantine new aquarium plants for 1\u20132 weeks before adding them. They can carry snails, pests, or disease.' },
+    { cat: 'care', emoji: '💧', tag: 'Care Tip', text: 'Always dechlorinate tap water before adding it to an aquarium. Chlorine and chloramine harm fish and bacteria.' },
+    { cat: 'care', emoji: '🪟', tag: 'Care Tip', text: 'Never place a tank in direct sunlight. It causes uncontrollable algae blooms and dangerous temperature swings.' },
+    { cat: 'care', emoji: '🦎', tag: 'Care Tip', text: 'Reptile hides should be snug, not spacious. A tight fit makes them feel secure and reduces chronic stress.' },
+    { cat: 'care', emoji: '🐾', tag: 'Care Tip', text: 'Check the first five ingredients on any pet food. Named meat protein should always come before fillers.' },
+    { cat: 'care', emoji: '🧹', tag: 'Care Tip', text: 'Clean filter media in old tank water, never tap water. Chlorine kills the beneficial bacteria you need.' },
+    { cat: 'care', emoji: '🐍', tag: 'Care Tip', text: 'Snakes often refuse food when they\'re about to shed. Cloudy eyes and dull skin are the telltale signs.' },
+    { cat: 'care', emoji: '🌊', tag: 'Care Tip', text: 'Stable water parameters are more important than perfect numbers. Avoid chasing a "textbook" pH.' },
+    { cat: 'care', emoji: '🐦', tag: 'Care Tip', text: 'Avoid scented candles, aerosols, and air fresheners near birds. Their respiratory systems are extremely sensitive.' },
+    { cat: 'care', emoji: '🪱', tag: 'Care Tip', text: 'Gut-load feeder insects with vegetables before offering them. Your reptile absorbs whatever the insect ate.' },
+    { cat: 'care', emoji: '🧊', tag: 'Care Tip', text: 'Frozen raw food should be thawed in the fridge, not at room temperature, to prevent bacterial growth.' },
+    { cat: 'care', emoji: '💡', tag: 'Care Tip', text: 'Fish need a consistent light cycle. Use a timer to give 8\u201310 hours of light and full darkness at night.' },
+    { cat: 'care', emoji: '🐢', tag: 'Care Tip', text: 'Dust feeder insects with calcium powder at every feeding for young reptiles, and every other feeding for adults.' },
+    { cat: 'care', emoji: '💧', tag: 'Care Tip', text: 'Mist tropical reptile enclosures daily or use a fogger to maintain proper humidity. Dehydration causes bad sheds.' },
+    { cat: 'care', emoji: '🏠', tag: 'Care Tip', text: 'Research an animal\'s adult size before buying. Many fish and reptiles outgrow starter tanks within a year.' },
+    { cat: 'care', emoji: '🐾', tag: 'Care Tip', text: 'Rotate your pet\'s toys and enrichment weekly. Novel items prevent boredom and encourage natural behaviours.' },
+    { cat: 'care', emoji: '🔬', tag: 'Care Tip', text: 'Cloudy aquarium water usually means a bacterial bloom. Don\'t do a massive water change. Let the cycle catch up.' },
+    { cat: 'care', emoji: '🐠', tag: 'Care Tip', text: 'Match tankmates carefully. Peaceful community fish can be stressed or killed by one aggressive species.' },
+    { cat: 'care', emoji: '🪵', tag: 'Care Tip', text: 'Provide multiple hides per reptile, at least one on the warm side and one on the cool side.' },
+    { cat: 'care', emoji: '🧪', tag: 'Care Tip', text: 'Ammonia and nitrite should always read zero in a cycled tank. Any detectable amount means something is wrong.' },
   ];
 
-  let current = 0;
-  let timer;
-
-  function startTimer() {
-    clearInterval(timer);
-    timer = setInterval(() => {
-      current = (current + 1) % facts.length;
-      showFact(current);
-    }, 9000);
+  // --- Shuffle helper (Fisher-Yates) ---
+  function shuffle(arr) {
+    for (let i = arr.length - 1; i > 0; i--) {
+      var j = Math.floor(Math.random() * (i + 1));
+      var tmp = arr[i]; arr[i] = arr[j]; arr[j] = tmp;
+    }
+    return arr;
   }
 
+  // --- State ---
+  var activeCat = 'all';
+  var filtered  = shuffle(facts.slice());
+  var current   = 0;
+  var timer     = null;
+  var progressFrame = null;
+  var cycleStart    = 0;
+
+  // --- Filter ---
+  function applyFilter(cat) {
+    activeCat = cat;
+    filtered = cat === 'all' ? facts.slice() : facts.filter(function(f) { return f.cat === cat; });
+    shuffle(filtered);
+    current = 0;
+    showFact(current);
+    startTimer();
+  }
+
+  catBtns.forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      catBtns.forEach(function(b) {
+        b.classList.remove('active');
+        b.setAttribute('aria-selected', 'false');
+      });
+      btn.classList.add('active');
+      btn.setAttribute('aria-selected', 'true');
+      applyFilter(btn.dataset.cat);
+    });
+  });
+
+  // --- Display ---
   function showFact(index) {
+    var f = filtered[index];
+    if (!f) return;
+
     display.classList.add('fade-out');
-    setTimeout(() => {
-      display.textContent = facts[index].emoji + '\u2002' + facts[index].text;
+    display.classList.remove('fade-in');
+
+    setTimeout(function() {
+      if (emojiEl) {
+        emojiEl.textContent = f.emoji;
+        emojiEl.classList.remove('pop');
+        void emojiEl.offsetWidth; // reflow
+        emojiEl.classList.add('pop');
+        setTimeout(function() { emojiEl.classList.remove('pop'); }, 400);
+      }
+      if (tagEl) tagEl.textContent = f.tag;
+      display.textContent = f.text;
+
       display.classList.remove('fade-out');
       display.classList.add('fade-in');
-      setTimeout(() => display.classList.remove('fade-in'), 400);
-    }, 350);
+      setTimeout(function() { display.classList.remove('fade-in'); }, 350);
+
+      if (counterEl) counterEl.textContent = (index + 1) + ' / ' + filtered.length;
+    }, FADE_MS);
   }
 
-  showFact(current);
-  startTimer();
+  // --- Progress bar ---
+  function animateProgress() {
+    if (progressFrame) cancelAnimationFrame(progressFrame);
+    cycleStart = performance.now();
 
-  if (nextBtn) {
-    nextBtn.addEventListener('click', () => {
-      current = (current + 1) % facts.length;
-      showFact(current);
-      startTimer(); // reset the auto-cycle timer on manual advance
+    function tick(now) {
+      var elapsed = now - cycleStart;
+      var pct = Math.min((elapsed / CYCLE_MS) * 100, 100);
+      if (progressEl) progressEl.style.width = pct + '%';
+      if (pct < 100) progressFrame = requestAnimationFrame(tick);
+    }
+    progressFrame = requestAnimationFrame(tick);
+  }
+
+  // --- Timer ---
+  function startTimer() {
+    clearInterval(timer);
+    if (progressFrame) cancelAnimationFrame(progressFrame);
+    animateProgress();
+    timer = setInterval(function() {
+      advance(1);
+    }, CYCLE_MS);
+  }
+
+  // --- Navigate ---
+  function advance(dir) {
+    current = (current + dir + filtered.length) % filtered.length;
+    showFact(current);
+    startTimer();
+  }
+
+  // --- Button events ---
+  if (nextBtn) nextBtn.addEventListener('click', function() { advance(1); });
+  if (prevBtn) prevBtn.addEventListener('click', function() { advance(-1); });
+
+  // --- Keyboard on card ---
+  if (card) {
+    card.addEventListener('keydown', function(e) {
+      if (e.key === 'ArrowRight') { advance(1); e.preventDefault(); }
+      if (e.key === 'ArrowLeft')  { advance(-1); e.preventDefault(); }
     });
   }
+
+  // --- Swipe support ---
+  if (card) {
+    var touchStartX = 0;
+    var touchStartY = 0;
+    card.addEventListener('touchstart', function(e) {
+      touchStartX = e.changedTouches[0].clientX;
+      touchStartY = e.changedTouches[0].clientY;
+    }, { passive: true });
+    card.addEventListener('touchend', function(e) {
+      var dx = e.changedTouches[0].clientX - touchStartX;
+      var dy = e.changedTouches[0].clientY - touchStartY;
+      if (Math.abs(dx) > 40 && Math.abs(dx) > Math.abs(dy)) {
+        advance(dx < 0 ? 1 : -1);
+      }
+    }, { passive: true });
+  }
+
+  // --- Pause on hover / focus ---
+  var ticker = document.querySelector('.fact-ticker');
+  if (ticker) {
+    ticker.addEventListener('mouseenter', function() {
+      clearInterval(timer);
+      if (progressFrame) cancelAnimationFrame(progressFrame);
+    });
+    ticker.addEventListener('mouseleave', function() { startTimer(); });
+    ticker.addEventListener('focusin', function() {
+      clearInterval(timer);
+      if (progressFrame) cancelAnimationFrame(progressFrame);
+    });
+    ticker.addEventListener('focusout', function(e) {
+      if (!ticker.contains(e.relatedTarget)) startTimer();
+    });
+  }
+
+  // --- Init ---
+  showFact(current);
+  startTimer();
 }
 
 /* ---- Legal page tabs ---- */

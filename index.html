@@ -333,11 +333,41 @@
       </div>
     </section>
 
-    <div class="fact-ticker" role="region" aria-label="Animal fact of the day">
+    <div class="fact-ticker" role="region" aria-label="Pet facts and tips">
       <div class="fact-ticker-inner">
-        <span class="fact-label" aria-hidden="true">&#128062;&nbsp;Did You Know?</span>
-        <p class="fact-text" id="factDisplay" aria-live="polite" aria-atomic="true"></p>
-        <button class="fact-next" type="button" aria-label="Next animal fact">Next &#8594;</button>
+        <!-- Category filter pills -->
+        <div class="fact-categories" role="tablist" aria-label="Filter facts by category">
+          <button class="fact-cat active" role="tab" aria-selected="true" data-cat="all">All</button>
+          <button class="fact-cat" role="tab" aria-selected="false" data-cat="reptile">🦎 Reptiles</button>
+          <button class="fact-cat" role="tab" aria-selected="false" data-cat="fish">🐠 Fish</button>
+          <button class="fact-cat" role="tab" aria-selected="false" data-cat="invert">🦐 Inverts</button>
+          <button class="fact-cat" role="tab" aria-selected="false" data-cat="bird">🐦 Birds</button>
+          <button class="fact-cat" role="tab" aria-selected="false" data-cat="dog">🐶 Dogs</button>
+          <button class="fact-cat" role="tab" aria-selected="false" data-cat="cat">🐱 Cats</button>
+          <button class="fact-cat" role="tab" aria-selected="false" data-cat="small">🐹 Small Pets</button>
+          <button class="fact-cat" role="tab" aria-selected="false" data-cat="care">💡 Care Tips</button>
+        </div>
+
+        <!-- Fact card -->
+        <div class="fact-card" role="tabpanel">
+          <span class="fact-emoji" id="factEmoji" aria-hidden="true"></span>
+          <div class="fact-body">
+            <span class="fact-tag" id="factTag"></span>
+            <p class="fact-text" id="factDisplay" aria-live="polite" aria-atomic="true"></p>
+          </div>
+        </div>
+
+        <!-- Controls -->
+        <div class="fact-controls">
+          <button class="fact-prev" type="button" aria-label="Previous fact">&#8592;</button>
+          <span class="fact-counter" id="factCounter" aria-hidden="true"></span>
+          <button class="fact-next" type="button" aria-label="Next fact">&#8594;</button>
+        </div>
+
+        <!-- Progress bar -->
+        <div class="fact-progress" aria-hidden="true">
+          <div class="fact-progress-bar" id="factProgressBar"></div>
+        </div>
       </div>
     </div>
 
@@ -923,9 +953,6 @@
       <p class="gallery-intro">A look inside our store — the animals we love, the brands we trust, and the shelves stocked with everything your pet needs. Come see us in person.</p>
       <div class="carousel-container">
         <div class="gallery-carousel" id="galleryCarousel" role="region" aria-label="Photo gallery carousel">
-          <div class="gallery-slide">
-            <img src="assets/img/featured/Fish-Supplies.webp" alt="Fish supplies and aquarium products at East Coast Pets" loading="lazy">
-          </div>
           <div class="gallery-slide">
             <img src="assets/img/featured/boreal.webp" alt="Colorful assortment of Boreal dog treats on shelves at East Coast Pets" loading="lazy">
           </div>
